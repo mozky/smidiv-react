@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer>
         <img src={logo} className="footer-logo" alt="logo" />
-        <h2>Miel de Pollo - 2017</h2>
+        <h2>ESCOM - 2017</h2>
       </footer>
     )
   }

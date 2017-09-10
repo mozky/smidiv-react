@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode'
 export function ValidateToken(token) {
   try {
     let decoded = jwt_decode(token)
-    return decoded._doc
+    return decoded.user
   } catch (err) {
     console.error('Error decoding token...', err)
     return false
