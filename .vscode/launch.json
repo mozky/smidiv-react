@@ -28,7 +28,6 @@
             "port": 9222,
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}/src",
-            "userDataDir": "${workspaceRoot}/.vscode/chrome",
             "sourceMapPathOverrides": {
                 "webpack:///src/*": "${webRoot}/*"
             }
