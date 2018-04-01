@@ -10,7 +10,6 @@ import Authenticate from '../Authentication'
 import { PropsRoute, PrivateRoute } from '../Helpers'
 import { ValidateToken } from '../../helpers'
 import Api from '../../api'
-import './App.css'
 
 class App extends Component {
   constructor(props) {

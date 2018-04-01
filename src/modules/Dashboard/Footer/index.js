@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import logo from '../../../images/logo.svg';
 import './Footer.css';
 
 class Footer extends Component {
   render() {
     return (
-      <footer>
-        <img src={logo} className="footer-logo" alt="logo" />
-        <h2>ESCOM - 2017</h2>
+      <footer id="Footer">
+        <h2>ESCOM - 2018</h2>
       </footer>
     )
   }

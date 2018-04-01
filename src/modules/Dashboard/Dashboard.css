@@ -1,0 +1,22 @@
+#Dashboard {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#Header {
+    flex-shrink: 0;
+}
+
+#Navbar {
+    flex-shrink: 0;
+}
+
+#Content {
+    flex: 1 0 auto;
+}
+
+#Footer {
+    flex-shrink: 0;
+}

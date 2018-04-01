@@ -7,7 +7,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="masthead clear">
+      <header id="Header" className="masthead clear">
         <div className="navbar area">
           <h1 className="brand"><Link to="/app">SMIDIV</Link> - Bienvenido {this.props.username}</h1>
           <nav id="navigation" className="list">

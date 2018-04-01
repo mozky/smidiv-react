@@ -1,0 +1,42 @@
+#Navbar {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 24px 12px;
+}
+
+#Navbar a {
+    background-color: #55acee;
+    border: 1px solid blue;
+    color: white;
+    font-size: 15px;
+    padding: 10px 30px;
+    cursor: pointer;
+    float: left;
+}
+
+/* Prevent double borders */
+#Navbar a:not(:last-child) {
+    border-right: none; 
+}
+
+/* Round the first and last buttons */
+#Navbar a:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#Navbar a:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* Add a background color on hover */
+#Navbar a:hover {
+    background-color: #6FC6FF;
+}
+
+/* Add a pressed button style */
+#Navbar a.selected, #Navbar a.selected:hover {
+    background-color: #4298ce;
+    cursor: default;
+}
