@@ -4,12 +4,12 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
-import Landing from '../Landing'
-import Dashboard from '../Dashboard'
-import Authenticate from '../Authentication'
-import { PropsRoute, PrivateRoute } from '../Helpers'
-import { ValidateToken } from '../../helpers'
-import Api from '../../api'
+import Landing from './Landing'
+import Dashboard from './Dashboard'
+import Authenticate from './Authentication'
+import { PropsRoute, PrivateRoute } from './Helpers'
+import { ValidateToken } from './../helpers'
+import Api from './../api'
 
 class App extends Component {
   constructor(props) {
