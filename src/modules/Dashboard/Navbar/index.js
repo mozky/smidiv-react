@@ -18,7 +18,7 @@ class Navbar extends Component {
         )
 
         return (
-            <nav id="Navbar">
+            <nav id="Navbar" className="area">
                 {buttons}
             </nav>
         )

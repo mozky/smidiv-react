@@ -6,6 +6,7 @@
 }
 
 #Navbar a {
+    flex-grow: 1;
     background-color: #55acee;
     border: 1px solid blue;
     color: white;

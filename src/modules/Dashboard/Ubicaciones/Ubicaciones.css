@@ -1,0 +1,48 @@
+#Ubicaciones {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-top: 5em;
+}
+
+#Ubicaciones .settings {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    flex: 1;
+    padding: 2em 3em;
+    color: white;
+}
+
+.ubicaciones-icon-big {
+    height: 7em;
+    width: 7em;
+    padding: 1em;
+}
+
+.ubicaciones-icon-clickable {
+    cursor: pointer;
+    height: 5em;
+    width: 5em;
+    padding: 1em;
+}
+
+.gray {
+    color: #444;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: green;
+}
+
+
+#Ubicaciones #carSettings {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+}

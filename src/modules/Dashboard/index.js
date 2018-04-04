@@ -5,6 +5,7 @@ import Header from './Header'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import About from './About'
+import Ubicaciones from './Ubicaciones'
 import './Dashboard.css'
 
 class Dashboard extends Component {
@@ -13,10 +14,11 @@ class Dashboard extends Component {
             <div id="Dashboard">
                 <Header username={this.props.user.username} handleLogout={this.props.handleLogout}/>
                 <Navbar currentTab={this.props.location.pathname}/>
-                <main id="Content" className="centered">
+                <main id="Content" className="area">
                     <Route exact path={this.props.match.url} render={() => <div>SMIDIV!</div>}/>
                     <Route exact path={`${this.props.match.url}/404`} render={() => <div>TODO: 404 page</div>} />
                     <Route exact path={`${this.props.match.url}/about`} component={About}/>
+                    <Route exact path={`${this.props.match.url}/ubicaciones`} component={Ubicaciones}/>
                 </main>
                 <Footer />
             </div>
