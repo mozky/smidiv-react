@@ -1,8 +1,8 @@
 import 'whatwg-fetch'
 import { ValidateToken, RemoveToken } from '../helpers'
 
-const API_URL = process.env.API_URL || 'localhost'
-const API_HOST = `http://${API_URL}:10010/`
+const API_HOST = process.env.API_HOST || 'localhost'
+const API_URL = `http://${API_HOST}:10010/`
 
 // CONTIENE LAS FUNCIONES QUE MAPEAN LOS DIFERENTES METODOS DE LA API
 function getValidToken(token) {
@@ -13,7 +13,7 @@ function getValidToken(token) {
 
 function health() {
   return new Promise(function (resolve, reject) {
-    fetch(API_HOST + 'health')
+    fetch(API_URL + 'health')
       .then(res => {
         if (res.status === 200) {
           resolve(res.text())
@@ -35,7 +35,7 @@ function login(request) {
       'password': request.password
     }
 
-    fetch(API_HOST + 'login', {
+    fetch(API_URL + 'login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ function register(request) {
       'password': request.password
     }
 
-    fetch(API_HOST + 'user', {
+    fetch(API_URL + 'user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ function register(request) {
 function userGet(username) {
   return new Promise(function(resolve, reject) {
     let headers = getValidToken()
-    fetch(API_HOST + 'user/' + username, {
+    fetch(API_URL + 'user/' + username, {
       headers
     })
       .then(res => {
