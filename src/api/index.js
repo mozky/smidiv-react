@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 import { ValidateToken, RemoveToken } from '../helpers'
 
-const API_HOST = process.env.API_HOST || 'localhost'
+const API_HOST = process.env.REACT_APP_ENV == 'production' ? 'smidiv.javiersl.com' : 'localhost'
 const API_PORT = process.env.API_PORT || '10010'
 const API_URL = `http://${API_HOST}:${API_PORT}/`
 
