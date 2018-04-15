@@ -1,7 +1,8 @@
 import 'whatwg-fetch'
 import { ValidateToken, RemoveToken } from '../helpers'
 
-const API_HOST = "http://localhost:10010/"
+const API_URL = process.env.API_URL || 'localhost'
+const API_HOST = `http://${API_URL}:10010/`
 
 // CONTIENE LAS FUNCIONES QUE MAPEAN LOS DIFERENTES METODOS DE LA API
 function getValidToken(token) {
