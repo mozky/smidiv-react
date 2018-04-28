@@ -3,11 +3,11 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import DeleteIcon from 'react-icons/lib/md/delete'
 import ModifyIcon from 'react-icons/lib/md/settings'
-import LocationIcon from 'react-icons/lib/md/location-on'
+import AlarmOffIcon from 'react-icons/lib/md/alarm-off'
 
-import './Ubicaciones.css'
+import './Alarmas.css'
 
-export default class Ubicaciones extends Component {
+export default class Historial extends Component {
     render() {
         const data = [{
             id: 1
@@ -22,7 +22,7 @@ export default class Ubicaciones extends Component {
         }]
 
         const columnas = [{
-            Header: 'Ubicacion',
+            Header: 'Alarma',
             accessor: 'id',
             width: 150
         }, {
@@ -30,19 +30,19 @@ export default class Ubicaciones extends Component {
             accessor: 'id',
             Cell: () => <ModifyIcon className="clickable modify-icon" />
         }, {
+            Header: 'Silenciar',
+            accessor: 'id',
+            Cell: () => <AlarmOffIcon className="clickable silence-icon" />
+        }, {
             Header: 'Eliminar',
             accessor: 'id',
             Cell: () => <DeleteIcon className="clickable delete-icon" />
-        }, {
-            Header: 'Mapa',
-            accessor: 'id',
-            Cell: () => <LocationIcon className="clickable silence-icon" />
         }]
 
         return (
             <div id="Historial">
                 <div className="titulo">
-                    <h2>Gestión de ubicaciones</h2>
+                    <h2>Gestión de alarmas</h2>
                     {/* <DeleteIcon /> */}
                 </div>
                 <div className="tabla">

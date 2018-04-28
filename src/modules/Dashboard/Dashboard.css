@@ -21,6 +21,10 @@
     flex-shrink: 0;
 }
 
+.rt-td {
+    line-height: 2em;
+}
+
 .area {
     display: -webkit-box;
     display: -ms-flexbox;
