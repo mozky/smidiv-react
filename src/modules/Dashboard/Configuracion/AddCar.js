@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Modal from '../Common/Modal'
+
 
 export default class AddCar extends Component {
     constructor(props) {
@@ -15,12 +17,18 @@ export default class AddCar extends Component {
     }
   
     handleSubmit = (event) => {
-        event.preventDefault()
-        this.props.onSummit(this.state)
+      event.preventDefault()
+
+      const { marca, modelo, placas } = this.state
+      this.props.onSummit({
+        marca,
+        modelo,
+        placas,
+      })
     }
   
     render() {
-      return (
+      const modalContent = (
         <form onSubmit={this.handleSubmit}>
           <label>
             Marca:
@@ -35,7 +43,16 @@ export default class AddCar extends Component {
             <input type="text" value={this.state.placas} name='placas' onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
-        </form>
+      </form>
+      )
+
+      return (
+          <Modal
+            content={modalContent}
+            title={"Añadir vehículo"}
+          >
+            {this.props.children}
+          </Modal>
       )
     }
 }
