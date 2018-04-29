@@ -1,11 +1,15 @@
-#Ubicaciones {
+#Configuracion {
+    width: 100%;
+}
+
+#Configuracion-menu {
     display: flex;
     flex-flow: row wrap;
     width: 100%;
     margin-top: 5em;
 }
 
-#Ubicaciones .settings {
+#Configuracion-menu .settings {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -27,7 +31,7 @@
     padding: 1em;
 }
 
-#Ubicaciones #carSettings {
+#Configuracion-menu #carSettings {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

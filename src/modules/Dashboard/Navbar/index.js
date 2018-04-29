@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LocationIcon from 'react-icons/lib/md/location-on'
 import CarIcon from 'react-icons/lib/md/directions-car'
 import HistoryIcon from 'react-icons/lib/md/history'
-import ModifyIcon from 'react-icons/lib/md/settings'
 import AlarmIcon from 'react-icons/lib/md/alarm'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -31,10 +30,10 @@ class Navbar extends Component {
 
         const buttons = Object.entries(tabs).map((tab, index) => {
             const tabUrl = tab[0]
-            const { label, icon } = tab[1]
+            const { icon } = tab[1]
             
             return (
-                <Link to={tab[0]} key={tab[0]} className={(this.props.currentTab === tab[0] ? 'selected': 'clickable') + ' navitem'}>
+                <Link to={tabUrl} key={tabUrl} className={(this.props.currentTab === tabUrl ? 'selected': 'clickable') + ' navitem'}>
                     {icon}
                 </Link>
             )

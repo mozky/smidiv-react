@@ -138,9 +138,47 @@ function userGet(username) {
   })
 }
 
+function vehiclePost(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    // TODO: Validate the fields? later...
+    const args = {
+      'username': request.username,
+      'marca': request.marca,
+      'modelo': request.modelo,
+      'placas': request.placas
+    }
+
+    fetch(API_URL + 'vehicle', {
+      method: 'POST',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('POST VEHICLE', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        return res.text()
+      })
+      .then(body => {
+        let res = JSON.parse(body)
+        if (!res.success) {
+          reject(res.message)
+        }
+      }).catch(err => {
+        console.log(err)
+        reject(err)
+      })
+  })
+}
+
 export default  {
     health,
     login,
     register,
-    userGet
+    userGet,
+    vehiclePost
 }

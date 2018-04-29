@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
-import DeleteIcon from 'react-icons/lib/md/delete'
 import LocationIcon from 'react-icons/lib/md/location-on'
 
 import './Historial.css'
