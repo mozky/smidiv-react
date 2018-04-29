@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom'
 import Landing from './Landing'
+import LoadingScreen from './LoadingScreen'
 import Dashboard from './Dashboard'
 import Authenticate from './Authentication'
 import { PropsRoute, PrivateRoute } from './Helpers'
@@ -86,7 +87,7 @@ class App extends Component {
 
     if (this.state.token && this.state.isLoggedIn && this.state.user === 'null') {
       return (
-        <div>Fetching your data, please w8...</div>
+        <LoadingScreen />
       )
     } else {
       return (
@@ -102,8 +103,8 @@ class App extends Component {
               user={this.state.user}
               admin={this.state.token.admin}
               isLoggedIn={this.state.isLoggedIn}
-              handleLogout={this.handleLogout} redirectTo="/auth" />
-
+              handleLogout={this.handleLogout}
+              redirectTo="/auth" />
           </Switch>
         </Router>
       )
