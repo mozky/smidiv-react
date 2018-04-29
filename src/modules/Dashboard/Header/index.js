@@ -13,13 +13,10 @@ class Header extends Component {
       <header id="Header" className="masthead clear">
         <div className="navbar area">
           <h1 className="brand"><Link to="/app" id="brand">SMIDIV</Link><span className="aluminio big-font">&nbsp;&nbsp;&nbsp;Bienvenido {this.props.username}</span></h1>
-          <nav id="navigation" className="list">
+          <div id="navigation" className="list">
             <Link to="/app/configuracion"><ModifyIcon className="clickable aluminio icon-small" /></Link>
             <a className="item clickable" onClick={() => this.props.handleLogout()}><LogoutIcon className="clickable aluminio icon-small" /></a>
-          </nav>
-          <button data-collapse data-target="#navigation" className="toggle">
-            <span className="icon"></span>
-          </button>
+          </div>
         </div>
       </header>
     )
