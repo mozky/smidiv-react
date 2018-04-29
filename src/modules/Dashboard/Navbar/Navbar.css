@@ -1,19 +1,30 @@
 #Navbar {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: center;
-    padding: 24px 12px;
+    padding-bottom: 12px;
+    height: 5em;
+    align-items: stretch;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    #Navbar {
+      width: 1140px;
+    }
 }
 
 #Navbar a {
-    flex-grow: 1;
     background-color: #55acee;
-    border: 1px solid blue;
+    border: 1px solid #489ad8;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     padding: 10px 30px;
     cursor: pointer;
     float: left;
+    text-transform: uppercase;
 }
 
 /* Prevent double borders */
@@ -23,12 +34,12 @@
 
 /* Round the first and last buttons */
 #Navbar a:first-child {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
 }
 #Navbar a:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
 }
 
 /* Add a background color on hover */
@@ -40,4 +51,16 @@
 #Navbar a.selected, #Navbar a.selected:hover {
     background-color: #4298ce;
     cursor: default;
+}
+
+.navitem {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navsubitem {
+    flex-grow: 1;
 }

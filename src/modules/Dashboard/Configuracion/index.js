@@ -10,16 +10,17 @@ export default class Configucarion extends Component {
     render() {
         return (
             <div id="Ubicaciones">
+
                 <div className="settings">
-                    <CarIcon className="ubicaciones-icon-big gray" />
+                    <CarIcon className="ubicaciones-icon-big gris" />
                     <div id="carSettings">
-                        <AddIcon className="ubicaciones-icon-clickable green" />
-                        <SettingsIcon className="ubicaciones-icon-clickable yellow" />
+                        <AddIcon className="ubicaciones-icon-clickable verde" />
+                        <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
                     </div>
                 </div>
                 <div className="settings">
-                    <UserIcon className="ubicaciones-icon-big gray" />
-                    <SettingsIcon className="ubicaciones-icon-clickable yellow" />
+                    <UserIcon className="ubicaciones-icon-big gris" />
+                    <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
                 </div>
             </div>
         )

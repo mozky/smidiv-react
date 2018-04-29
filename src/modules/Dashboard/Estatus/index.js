@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
-import DeleteIcon from 'react-icons/lib/md/delete'
-import ModifyIcon from 'react-icons/lib/md/settings'
-import AlarmOffIcon from 'react-icons/lib/md/alarm-off'
 
 import './Estatus.css'
 
@@ -55,10 +52,7 @@ export default class Estatus extends Component {
 
         return (
             <div id="Historial">
-                <div className="titulo">
-                    <h2>Estatus del automóvil</h2>
-                    {/* <DeleteIcon /> */}
-                </div>
+                <div className="titulo">Estatus del automóvil</div>
                 <div className="tabla">
                     <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />
                 </div>

@@ -28,23 +28,20 @@ export default class Historial extends Component {
         }, {
             Header: 'Modificar',
             accessor: 'id',
-            Cell: () => <ModifyIcon className="clickable modify-icon" />
+            Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Silenciar',
             accessor: 'id',
-            Cell: () => <AlarmOffIcon className="clickable silence-icon" />
+            Cell: () => <AlarmOffIcon className="clickable azul icon" />
         }, {
             Header: 'Eliminar',
             accessor: 'id',
-            Cell: () => <DeleteIcon className="clickable delete-icon" />
+            Cell: () => <DeleteIcon className="clickable rojo icon" />
         }]
 
         return (
             <div id="Historial">
-                <div className="titulo">
-                    <h2>Gestión de alarmas</h2>
-                    {/* <DeleteIcon /> */}
-                </div>
+                <div className="titulo">Gestión de alarmas</div>
                 <div className="tabla">
                     <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />
                 </div>

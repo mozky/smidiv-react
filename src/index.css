@@ -3,4 +3,46 @@ html, body, #root {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    font-size: 1em;
 }
+
+.verde {
+    color: #007849;
+}
+
+.amarillo {
+    color: #F9CF00;
+}
+
+.naranja {
+    color: #F19F4D;
+}
+
+.rojo {
+    color: #E24E42;
+}
+
+.azul {
+    color: #4484CE;
+}
+
+.gris {
+    color: #444;
+}
+
+.aluminio {
+    color: #D9D9D9;
+}
+
+.icon {
+    font-size: 2em;
+}
+
+.icon-small {
+    font-size: 1.7em;
+}
+
+.clickable {
+    cursor: pointer;
+}
+

@@ -27,24 +27,19 @@ export default class Ubicaciones extends Component {
             width: 150
         }, {
             Header: 'Modificar',
-            accessor: 'id',
-            Cell: () => <ModifyIcon className="clickable modify-icon" />
+            Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
-            accessor: 'id',
-            Cell: () => <DeleteIcon className="clickable delete-icon" />
+            Cell: () => <DeleteIcon className="clickable rojo icon" />
         }, {
             Header: 'Mapa',
-            accessor: 'id',
-            Cell: () => <LocationIcon className="clickable silence-icon" />
+            Cell: () => <LocationIcon className="clickable azul icon" />
         }]
 
         return (
             <div id="Historial">
-                <div className="titulo">
-                    <h2>Gestión de ubicaciones</h2>
-                    {/* <DeleteIcon /> */}
-                </div>
+                <div className="titulo">Gestión de ubicaciones</div>
+                {/* <DeleteIcon /> */}
                 <div className="tabla">
                     <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />
                 </div>

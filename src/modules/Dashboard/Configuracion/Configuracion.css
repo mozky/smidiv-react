@@ -27,19 +27,6 @@
     padding: 1em;
 }
 
-.gray {
-    color: #444;
-}
-
-.yellow {
-    color: yellow;
-}
-
-.green {
-    color: green;
-}
-
-
 #Ubicaciones #carSettings {
     display: flex;
     flex-flow: row wrap;

@@ -2,21 +2,3 @@
     width: 100%;
     padding: 1em 0;
 }
-
-#Historial div.titulo {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-#Historia div.titulo h2 {
-    flex-grow: 1;
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-.location-icon {
-    font-size: 2em;
-    color: red;
-}
