@@ -44,15 +44,15 @@ export default class EditUser extends Component {
         const modalContent = (
             <form onSubmit={this.handleSubmit}>
                 <label>
-                    Marca:
+                    Nombre:
                     <input type="text" value={this.state.marca} name='marca' onChange={this.handleChange} />
                 </label>
                 <label>
-                    Modelo:
+                    Apellidos:
                     <input type="text" value={this.state.modelo} name='modelo' onChange={this.handleChange} />
                 </label>
                 <label>
-                    Placa:
+                    Fecha Nacimiento:
                     <input type="text" value={this.state.placas} name='placas' onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Submit" />

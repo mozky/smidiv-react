@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactModal from 'react-modal'
+import IconClose from 'react-icons/lib/md/close'
 
 ReactModal.setAppElement('#root')
 
@@ -19,29 +20,6 @@ export default class Modal extends Component {
       this.setState({modalIsOpen: false})
     }
   
-    handleChange = (event) => {
-      this.setState({[event.target.name]: event.target.value})
-    }
-  
-    handleSubmit = (event) => {
-      event.preventDefault()
-
-      const { nombre, apellidos, fechaNacimiento, correoElectronico, contraseña, repetirContraseña } = this.state
-      
-      if (contraseña !== repetirContraseña) {
-        return this.setState({
-            hasError: {
-                email: true
-            }
-        })
-      }
-      
-      this.props.onSummit({
-        nombre,
-        apellidos
-      })
-    }
-  
     render() {
         const { content, title, children } = this.props
         return (
@@ -49,11 +27,13 @@ export default class Modal extends Component {
                 <ReactModal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
-                    style={customStyles}
+                    style={styles.modalStyles}
                 >
-                    <h2 ref={subtitle => this.subtitle = subtitle}>{title}</h2>
-                    <button onClick={this.closeModal}>close</button>
-                    {content}
+                    <div style={styles.modalHeader}>
+                        <div ref={subtitle => this.subtitle = subtitle}>{title}</div>
+                        <IconClose className={'clickable'} onClick={this.closeModal}></IconClose>
+                    </div>
+                    { content }
                 </ReactModal>
                 {children}
             </div>
@@ -61,16 +41,28 @@ export default class Modal extends Component {
     }
 }
 
-const customStyles = {
-    overlay: {
-        backgroundColor: 'papayawhip'
+const styles = {
+    modalStyles: {
+        overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        content: {
+            borderRadius: '1px',
+            top: '50%',
+            left: '50%',
+            maxWidth: '75vw',
+            width: '500px',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)'
+        }
     },
-    content: {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
+    modalHeader: {
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        justifyContent: 'space-between',
+        fontSize: '1.5em',
+        paddingBottom: '1em'
     }
 }
