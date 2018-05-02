@@ -6,7 +6,7 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    margin-top: 5em;
+    margin-top: 1em;
 }
 
 #Configuracion-menu .settings {
@@ -45,9 +45,10 @@
 
 .formRow {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     flex-grow: 1;
     padding: 1em;
+    padding-bottom: 0em;
     justify-content: space-around;
 }
 
@@ -67,6 +68,7 @@
     padding: 0px;
     border: #444 0px solid;
     border-bottom: #444 1px solid;
+    margin-bottom: 1em;
 }
 
 .formButton {
