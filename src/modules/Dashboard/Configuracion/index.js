@@ -7,12 +7,13 @@ import Api from '../../../api'
 
 import EditUser from './EditUser'
 import AddCar from './AddCar'
+import EditCar from './EditCar'
 
 import './Configuracion.css'
 
 export default class Configuracion extends Component {
     handleAddNewCar = (values) => {
-        Api.vehiclePost(Object.assign(values, { username: this.props.user.username})).then((car) => {
+        Api.vehiclePost(Object.assign(values, { username: this.props.user.username })).then((car) => {
             console.log(car)
         }).catch((error) => {
             console.log('Error!', error)
@@ -21,6 +22,10 @@ export default class Configuracion extends Component {
 
     handleUserEdit = (values) => {
         console.log('TODO - Add user edit:', values)
+    }
+
+    handleCarEdit = (values) => {
+     console.log('No ')
     }
 
     render() {
@@ -32,7 +37,9 @@ export default class Configuracion extends Component {
                         <AddCar onSummit={this.handleAddNewCar}>
                             <AddIcon className="ubicaciones-icon-clickable verde" />
                         </AddCar>
-                        <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
+                        <EditCar onSummit={this.handleCarEdit}>
+                            <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
+                        </EditCar>
                     </div>
                 </div>
                 <div className="settings">

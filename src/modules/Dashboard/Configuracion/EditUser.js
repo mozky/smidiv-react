@@ -34,7 +34,11 @@ export default class EditUser extends Component {
       
       this.props.onSummit({
         nombre,
-        apellidos
+        apellidos,
+        fechaNacimiento,
+        correoElectronico,
+        contraseña,
+        repetirContraseña
       })
     }
   
@@ -42,21 +46,41 @@ export default class EditUser extends Component {
         const { user } = this.props
 
         const modalContent = (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Nombre:
-                    <input type="text" value={this.state.marca} name='marca' onChange={this.handleChange} />
-                </label>
-                <label>
-                    Apellidos:
-                    <input type="text" value={this.state.modelo} name='modelo' onChange={this.handleChange} />
-                </label>
-                <label>
-                    Fecha Nacimiento:
-                    <input type="text" value={this.state.placas} name='placas' onChange={this.handleChange} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div id="editUserForm">
+                <div className="formRow">
+                    <label>
+                        <span>Nombre</span>
+                        <input type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        <span>Apellidos</span>
+                        <input type="text" value={this.state.apellidos} name='apellidos' onChange={this.handleChange} />
+                    </label>
+                </div>
+                <div className="formRow">
+                    <label>
+                     <span>Fecha de nacimiento</span>
+                        <input type="text" value={this.state.fechaNacimiento} name='fechaNacimiento' onChange={this.handleChange} />
+                    </label>
+                    <label>
+                         <span>Correo electrónico</span>
+                        <input type="text" value={this.state.correoElectronico} name='correoElectronico' onChange={this.handleChange} />
+                    </label>
+                </div>
+                <div className="formRow">
+                    <label>
+                     <span>Contraseña</span>
+                        <input type="text" value={this.state.contraseña} name='contraseña' onChange={this.handleChange} />
+                    </label>
+                    <label>
+                         <span>Repetir contraseña</span>
+                        <input type="text" value={this.state.repetirContraseña} name='repetirContraseña' onChange={this.handleChange} />
+                    </label>
+                </div>
+                <div className="formButton">
+                    <div style={styles.button} onClick={this.handleSubmit}>Modificar usuario</div>
+                </div>
+            </div>
         ) 
 
         return (
@@ -67,5 +91,15 @@ export default class EditUser extends Component {
                 {this.props.children}
             </Modal>
         )
+    }
+}
+
+const styles = {
+    button: {
+        cursor: 'pointer',
+        color: '#fff',
+        backgroundColor: '#4484CE',
+        padding: '1em 2em',
+        marginTop: '1em'
     }
 }

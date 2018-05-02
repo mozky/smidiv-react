@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Modal from '../Common/Modal'
 
 
-export default class AddCar extends Component {
+export default class EditCar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +31,7 @@ export default class AddCar extends Component {
   
     render() {
       const modalContent = (
-        <div id="addCarForm">
+        <div id="editCarForm">
         <div className="formRow">
           <label>
             <span>Marca</span>
@@ -53,7 +53,7 @@ export default class AddCar extends Component {
           </label>
         </div>
         <div className="formButton">
-          <div style={styles.button} onClick={this.handleSubmit}>Agregar automóvil</div>
+          <div style={styles.button} onClick={this.handleSubmit}>Editar automóvil</div>
         </div>
       </div>
       )
@@ -61,7 +61,7 @@ export default class AddCar extends Component {
       return (
           <Modal
             content={modalContent}
-            title={"Añadir vehículo"}
+            title={"Editar vehículo"}
           >
             {this.props.children}
           </Modal>
@@ -70,11 +70,11 @@ export default class AddCar extends Component {
 }
 
 const styles = {
-  button: {
-      cursor: 'pointer',
-      color: '#fff',
-      backgroundColor: '#4484CE',
-      marginTop: '1em',
-      padding: '1em 2em'
-  }
+    button: {
+        cursor: 'pointer',
+        color: '#fff',
+        backgroundColor: '#4484CE',
+        padding: '1em 2em',
+        marginTop: '1em'
+    }
 }

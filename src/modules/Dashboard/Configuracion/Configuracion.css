@@ -37,3 +37,44 @@
     justify-content: center;
     width: 100%;
 }
+
+#editUserForm {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.formRow {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    padding: 1em;
+    justify-content: space-around;
+}
+
+.formRow > label {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.formRow > label > span {
+    padding-bottom: 0.8em;
+    font-size: 1.2em;
+    color: #444;
+}
+
+.formRow > label > input {
+    height: 1.7em;
+    padding: 0px;
+    border: #444 0px solid;
+    border-bottom: #444 1px solid;
+}
+
+.formButton {
+    display: flex;
+    justify-content: center;
+}
+
+.formButton > button {
+    width: 150px;
+    height: 3em;
+}

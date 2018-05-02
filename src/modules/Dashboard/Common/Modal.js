@@ -62,7 +62,8 @@ const styles = {
         display: 'flex',
         flexFlow: 'row nowrap',
         justifyContent: 'space-between',
-        fontSize: '1.5em',
-        paddingBottom: '1em'
+        fontSize: '1.6em',
+        paddingBottom: '1em',
+        color: '#444'
     }
 }
