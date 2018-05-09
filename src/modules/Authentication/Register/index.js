@@ -41,7 +41,7 @@ class Register extends Component {
         <button type="button" onClick={() => this.props.handleSubmit(this.state)}>
           Register
         </button>
-        <p className="message">Ya tienes cuenta? <a title="Click to go login page" onClick={(e) => this.props.goTo(Types.LOGIN, e)}>Iniciar Sesión</a></p>
+        <p className="message">Ya tienes cuenta? <a title="Click to go login page" className="blue clickable" onClick={(e) => this.props.goTo(Types.LOGIN, e)}>Iniciar Sesión</a></p>
       </form>
     );
   }

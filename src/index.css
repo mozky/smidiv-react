@@ -51,5 +51,10 @@ button {
 }
 
 a {
+    color: #4484CE;
+    text-decoration: none;
+}
+
+a.blue {
     color: #4484CE !important;
 }

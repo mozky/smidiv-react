@@ -34,7 +34,7 @@ class Login extends Component {
         <button type="button" className="azul" onClick={() => this.props.handleSubmit(this.state)}>
           Iniciar Sesión
         </button>
-        <p className="message">No tienes usuario? <a title="Haz click para ir a la página de registro" className="clickable" onClick={(e) => this.props.goTo(Types.REGISTER, e)}>Crea una cuenta</a></p>
+        <p className="message">No tienes usuario? <a title="Haz click para ir a la página de registro" className="clickable blue" onClick={(e) => this.props.goTo(Types.REGISTER, e)}>Crea una cuenta</a></p>
       </form>
     );
   }
