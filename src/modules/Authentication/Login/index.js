@@ -28,13 +28,13 @@ class Login extends Component {
   render() {
     return (
       <form className="login-form">
-        <input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange} />
+        <input type="text" placeholder="usuario" value={this.state.username} onChange={this.handleUsernameChange} />
 
-        <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-        <button type="button" onClick={() => this.props.handleSubmit(this.state)}>
-          Login
+        <input type="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
+        <button type="button" className="azul" onClick={() => this.props.handleSubmit(this.state)}>
+          Iniciar Sesión
         </button>
-        <p className="message">Not registered? <a title="Click to go to registration page" onClick={(e) => this.props.goTo(Types.REGISTER, e)}>Create an account</a></p>
+        <p className="message">No tienes usuario? <a title="Haz click para ir a la página de registro" className="clickable" onClick={(e) => this.props.goTo(Types.REGISTER, e)}>Crea una cuenta</a></p>
       </form>
     );
   }

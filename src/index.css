@@ -46,3 +46,10 @@ html, body, #root {
     cursor: pointer;
 }
 
+button {
+    background: #4484CE !important;
+}
+
+a {
+    color: #4484CE !important;
+}

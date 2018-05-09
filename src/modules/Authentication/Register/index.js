@@ -35,13 +35,13 @@ class Register extends Component {
   render() {
     return (
       <form className="register-form">
-        <input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange} />
-        <input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-        <input type="email" placeholder="email address" value={this.state.email} onChange={this.handleEmailChange}/>
+        <input type="text" placeholder="usuario" value={this.state.username} onChange={this.handleUsernameChange} />
+        <input type="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
+        <input type="email" placeholder="correo electrónico" value={this.state.email} onChange={this.handleEmailChange}/>
         <button type="button" onClick={() => this.props.handleSubmit(this.state)}>
           Register
         </button>
-        <p className="message">Already registered? <a title="Click to go login page" onClick={(e) => this.props.goTo(Types.LOGIN, e)}>Sign In</a></p>
+        <p className="message">Ya tienes cuenta? <a title="Click to go login page" onClick={(e) => this.props.goTo(Types.LOGIN, e)}>Iniciar Sesión</a></p>
       </form>
     );
   }

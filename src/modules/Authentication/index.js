@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Register from './Register'
 import Login from './Login'
-import logo from '../../images/logo.svg'
+import logo from '../../images/logo_escom.png'
 import * as Types from '../../types'
 import Api from '../../api'
 import './Authentication.css'
@@ -71,7 +71,7 @@ class Authenticate extends Component {
     return (
       <div className="app login-page">
         <div className="form">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo ESCOM" />
           { renderedTab }
         </div>
       </div>
