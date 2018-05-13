@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Register from './Register'
 import Login from './Login'
@@ -71,7 +72,7 @@ class Authenticate extends Component {
     return (
       <div className="app login-page">
         <div className="form">
-          <img src={logo} className="App-logo" alt="logo ESCOM" />
+          <Link to="/"><img src={logo} className="App-logo" alt="logo ESCOM" /></Link>
           { renderedTab }
         </div>
       </div>

@@ -1,14 +1,14 @@
 /* TEMPLATE */
 
 #Landing {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font: normal 16px sans-serif;
-  color: #555;
+	margin: 0;
+	padding: 0;
+	font: normal 16px sans-serif;
+	color: #555;
 }
 
-ul.l, nav.l {
+ul.l,
+nav.l {
 	list-style: none;
 }
 
@@ -19,7 +19,7 @@ a.l {
 	opacity: 0.9;
 }
 
-a.l:hover{
+a.l:hover {
 	opacity: 1;
 }
 
@@ -44,30 +44,26 @@ section.l {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	padding: 125px 100px;
 }
 
 @media (max-width: 1000px) {
-
 	section.l {
 		padding: 100px 50px;
 	}
-
 }
 
 @media (max-width: 600px) {
-
 	section.l {
 		padding: 80px 30px;
 	}
-
 }
 
 section.l h3.title {
 	color: #414a4f;
-	text-transform: capitalize; 
-	font: bold 32px 'Open Sans', sans-serif;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 32px;
 	margin-bottom: 35px;
 	text-align: center;
 }
@@ -102,45 +98,40 @@ header.l {
 	align-items: center;
 	color: #fff;
 	padding: 35px 100px 0;
-	box-sizing: border-box;
 }
 
-header.l h2{
-	font-family: 'Open Sans', sans-serif;
+header.l h2 {
 	color: #fff;
 }
 
-header.l nav{
+header.l nav {
 	display: flex;
 }
 
-header.l nav li{
+header.l nav li {
 	margin: 0 15px;
 }
 
-header.l nav li:first-child{
-	margin-left: 0;	
+header.l nav li:first-child {
+	margin-left: 0;
 }
 
-header.l nav li:last-child{
-	margin-right: 0;	
+header.l nav li:last-child {
+	margin-right: 0;
 }
 
-
-
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 	header.l {
 		padding: 20px 50px;
 	}
 }
 
-
-@media (max-width: 700px){
+@media (max-width: 700px) {
 	header.l {
-		flex-direction: column;		
+		flex-direction: column;
+		display: none;
 	}
-
-	header.l h2{
+	header.l h2 {
 		margin-bottom: 15px;
 	}
 }
@@ -157,7 +148,7 @@ header.l nav li:last-child{
 	text-align: center;
 }
 
-.hero .background-image{
+.hero .background-image {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -168,7 +159,7 @@ header.l nav li:last-child{
 	z-index: -1;
 }
 
-.hero .background-image:after{
+.hero .background-image:after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -179,136 +170,147 @@ header.l nav li:last-child{
 	opacity: 0.65;
 }
 
-.hero h1{
-	font: bold 60px 'Open Sans', sans-serif;
-	margin-bottom: 15px;
+.hero h1 {
+	font-weight: bold;
+	font-size: 4em;
+	margin-bottom: 0px;
 }
 
-.hero h3{
-	font: normal 28px 'Open Sans', sans-serif;
-	margin-bottom: 40px;
+.hero h3 {
+	font-weight: normal;
+	font-size: 28px;
+	margin: 15px 0 40px;
 }
 
-.hero button.btn{
+.hero button.btn {
 	padding: 20px 46px;
 }
 
 #enter_button {
-  border: 0;
-  text-transform: uppercase;
-  font-size: 1.2em;
-  padding: 1em 5em;
-  margin: 1em;
-  background-color: cornflowerblue;
-  color: white;
+	border: 0;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	padding: 1em 5em;
+	margin: 1em;
+	background-color: cornflowerblue;
+	color: white;
 }
 
-@media (max-width: 800px){
+#apiStatus {
+	font-size: 20px;
+	font-weight: normal;
+	margin: 0px;
+}
 
-	.hero{
+@media (max-width: 800px) {
+	.hero {
 		min-height: 600px;
 	}
-
-	.hero h1{
+	.hero h1 {
 		font-size: 48px;
 	}
-
-	.hero h3{
+	.hero h3 {
 		font-size: 24px;
 	}
-
-	.hero button.btn{
+	.hero button.btn {
 		padding: 15px 40px;
 	}
+}
 
+@media (max-width: 600px) {
+	.hero h1 {
+		font-size: 30px;
+	}
 }
 
 /*----------------------
  	Features Section
 ----------------------*/
 
-.features{
+.features {
 	background-color: #f7f7f7;
 }
 
-.features .grid li{
+.features .grid li {
 	padding: 0 30px;
-	flex-basis: 33%;
+	flex-basis: 25%;
 	text-align: center;
 }
 
-.features .grid li i{
-    font-size: 50px;
-    color: #2196F3;
-    margin-bottom: 25px;
+.features .grid li i {
+	font-size: 50px;
+	color: #2196F3;
+	margin-bottom: 25px;
 }
 
-.features .grid li h4{
+.features .grid li h4 {
 	color: #555;
-    font-size: 20px;
-    margin-bottom: 25px;
+	font-size: 1.7em;
+	margin-bottom: 10px;
 }
 
-.features .grid li p{
-    margin: 0;
+.features .grid li p {
+	margin: 0;
 }
 
-@media (max-width: 1000px){
+.moduleLogo {
+	width: 150px;
+	height: 150px;
+}
 
-	.features .grid li{
-		flex-basis: 70%;
+@media (max-width: 1250px) {
+	.features .grid {
+		padding: 0px;
+	}
+	.features .grid li {
+		padding: 0px;
+		flex-basis: 50%;
 		margin-bottom: 65px;
 	}
-
-	.features .grid li:last-child{
+	.features .grid li:last-child {
 		margin-bottom: 0;
 	}
-
 }
 
-
-@media (max-width: 600px){
-
-	.features .grid li{
+@media (max-width: 700px) {
+	.features .grid li {
 		flex-basis: 100%;
 	}
-
 }
 
 /*--------------------
  	Reviews Section
 --------------------*/
 
-.reviews{
+.reviews {
 	background-color: #fff;
 }
 
-.reviews .quote{
+.reviews .quote {
 	text-align: center;
 	width: 80%;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    padding: 0;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 1.5;
+	margin-bottom: 20px;
+	padding: 0;
 }
 
-.reviews .author{
-    font-size: 18px;
-    margin-bottom: 50px;
+.reviews .author {
+	font-size: 18px;
+	margin-bottom: 50px;
 }
 
-.reviews .author:last-child{
-    margin-bottom: 0;
+.reviews .author:last-child {
+	margin-bottom: 0;
 }
 
-@media (max-width: 1000px){
-	.reviews .quote{
+@media (max-width: 1000px) {
+	.reviews .quote {
 		font-size: 20px;
 	}
-
-	.reviews .author{
-	    font-size: 16px;
+	.reviews .author {
+		font-size: 16px;
 	}
 }
 
@@ -316,7 +318,7 @@ header.l nav li:last-child{
  	Contact Section
 ---------------------*/
 
-.contact{
+.contact {
 	background-color: #f7f7f7;
 }
 
@@ -331,24 +333,22 @@ footer.l {
 	text-align: center;
 	color: #fff;
 	background-color: #414a4f;
-  padding: 60px 0;
-  margin-top: 0px;
-  box-sizing: border-box;
+	padding: 60px 0;
+	margin-top: 0px;
 }
 
-footer.l p{
+footer.l p {
 	text-transform: uppercase;
 	font-size: 14px;
-	color: rgba(255,255,255,0.6);
+	color: rgba(255, 255, 255, 0.6);
 	margin-bottom: 10px;
 }
 
-footer.l p a{
+footer.l p a {
 	color: #fff;
 }
 
-@media (max-width: 700px){
-
+@media (max-width: 700px) {
 	footer.l {
 		padding: 80px 15px;
 	}
@@ -359,20 +359,25 @@ footer.l p a{
 -------------*/
 
 #topBtn {
-    position: fixed; /* Fixed/sticky position */
-    bottom: 2em;
-    right: 2em;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #4484CE;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 1px;
-    font-size: 20px;
+	position: fixed;
+	/* Fixed/sticky position */
+	bottom: 2em;
+	right: 2em;
+	z-index: 99;
+	border: none;
+	outline: none;
+	background-color: #4484CE;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 1px;
+	font-size: 20px;
 }
 
 #topBtn:hover {
-    background-color: rgb(17, 104, 175);
+	background-color: rgb(17, 104, 175);
+}
+
+#linkDocumento {
+	font-size: 1.4em;
 }

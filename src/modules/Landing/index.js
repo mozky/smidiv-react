@@ -6,6 +6,10 @@ import Api from '../../api'
 import './Landing.css'
 
 import hero from '../../images/hero.jpg'
+import node from '../../images/node.png'
+import react from '../../images/react.png'
+import android from '../../images/android.png'
+import arduino from '../../images/arduino.svg'
 
 export default class Landing extends Component {
   constructor(props) {
@@ -62,43 +66,47 @@ export default class Landing extends Component {
       <div id="Landing">
         <AnchorLink href="#header" style={{display: this.state.showTopButton ? 'block' : 'none'}} id="topBtn" title="Go to top">⬆</AnchorLink>
 
-        {/* <h3>Servidor: {this.state.apiStatus}</h3> */}
         <header id="header" className="l">
           <Link to ="/"><h2 className="l">SMIDIV</h2></Link>
           <nav className="l">
-            <li><AnchorLink href="#features" className="l">Products</AnchorLink></li>
-            <li><AnchorLink href="#reviews" className="l">About</AnchorLink></li>
-            <li><AnchorLink href="#contact" className="l">Contacts</AnchorLink></li>
+            <li><AnchorLink href="#features" className="l">Sistema SMIDIV</AnchorLink></li>
+            <li><AnchorLink href="#reviews" className="l">Nosotros</AnchorLink></li>
+            <li><AnchorLink href="#contact" className="l">TT A-072</AnchorLink></li>
           </nav>
         </header>
 
         <section className="l hero">
           <div className="background-image" style={{backgroundImage: `url(${hero})`}}></div>
-          <h1>Sistema Modular para la integración de dispositivos inteligentes en vehículos</h1>
-          <h3>Trabajo Terminal #A072</h3>
+          <h1>Sistema Modular para la Integración de Dispositivos Inteligentes en Vehículos, por medio del puerto OBD‐II</h1>
+          <h3>Trabajo Terminal A-072</h3>
           <Link to="/app"><button id="enter_button" className="btn clickable" >Entrar</button></Link>
-          <h4>{this.state.apiStatus ? `Estatus API: ${this.state.apiStatus}` : 'Conectando con servidor...'}</h4>
+          <h4 id="apiStatus">{this.state.apiStatus ? `Estatus API: ${this.state.apiStatus}` : 'Conectando con servidor...'}</h4>
         </section>
 
         <section id="features" className="l features">
-          <h3 className="title">Features and services</h3>
+          <h3 className="title">Sistema SMIDIV</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
           <hr className="l"/>
 
           <ul className="grid l">
             <li>
-              <i className="fa fa-camera-retro"></i>
-              <h4>Photography</h4>
+              <img src={arduino} img="arduino logo" className="moduleLogo" />
+              <h4>Módulo Arduino</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
             <li>
-              <i className="fa fa-cubes"></i>
-              <h4>Web Development</h4>
+              <img src={node} img="node js logo" className="moduleLogo" />
+              <h4>Servidor Central</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
             <li>
-              <i className="fa fa-newspaper-o"></i>
-              <h4>Content Editing</h4>
+              <img src={react} img="react js logo" className="moduleLogo" />
+              <h4>Aplicación Web</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
+            </li>
+            <li>
+              <img src={android} img="android logo" className="moduleLogo" />
+              <h4>Aplicación Móvil</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
           </ul>
@@ -106,7 +114,7 @@ export default class Landing extends Component {
 
 
         <section id="reviews" className="l reviews">
-          <h3 className="title">What others say:</h3>
+          <h3 className="title">Nosotros</h3>
 
           <p className="quote">Mauris sit amet mauris a arcu eleifend ultricies eget ut dolor. className aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
           <p className="author">— Patrick Farrell</p>
@@ -120,8 +128,8 @@ export default class Landing extends Component {
 
 
         <section id="contact" className="l contact">
-          <h3 className="title">Join our newsletter</h3>	
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
+          <h3 className="title">Trabajo Terminal 2017 A-072</h3>	
+          <a id="linkDocumento" href="https://docs.google.com/document/d/1E6HxZzhglHsb08cchLdDYE0tO7ooVxYUGT_RJWKC73w/edit?usp=sharing" target="_blank">Documento en línea</a>
           <hr className="l"/>
         </section>
 
