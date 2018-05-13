@@ -9,11 +9,13 @@ export default class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiStatus: 'Conectando...'
+      apiStatus: 'Conectando...',
+      showTopButton: false,
     }
   }
 
   componentDidMount() {
+    window.addEventListener('scroll', this.scrollTracker)
     this.timerID = setInterval(
       () => this.getApiStatus(),
       5000
@@ -34,9 +36,24 @@ export default class Landing extends Component {
     })
   }
 
+  scrollTracker = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      this.setState({showTopButton: true})
+    } else {
+      this.setState({showTopButton: false})
+    }
+  }
+
+  backToTop = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; 
+  }
+
   render() {
     return(
       <div id="Landing">
+        <button onClick={this.backToTop} style={{display: this.state.showTopButton ? 'block' : 'none'}} id="topBtn" title="Go to top">Top</button>
+
         {/* <h3>Servidor: {this.state.apiStatus}</h3> */}
         <header className="l">
           <Link to ="/"><h2 className="l">SMIDIV</h2></Link>
@@ -53,21 +70,6 @@ export default class Landing extends Component {
           <h3>Trabajo Terminal #A072</h3>
           <Link to="/app"><button id="enter_button" className="btn clickable">Entrar</button></Link>
         </section>
-
-
-        {/* <section className="our-work">
-          <h3 className="title">Some of our work</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
-          <hr />
-
-          <ul className="grid">
-            <li className="small" style="background-image: url(assets/img/coast.jpg);"></li>
-            <li className="large" style="background-image: url(assets/img/island.jpg);"></li>
-            <li className="large" style="background-image: url(assets/img/balloon.jpg);"></li>
-            <li className="small" style="background-image: url(assets/img/mountain.jpg);"></li>
-          </ul>
-        </section> */}
-        
 
         <section id="features" className="l features">
           <h3 className="title">Features and services</h3>
