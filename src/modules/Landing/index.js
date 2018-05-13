@@ -11,7 +11,7 @@ export default class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiStatus: 'Conectando...',
+      apiStatus: false,
       showTopButton: false,
     }
   }
@@ -20,7 +20,7 @@ export default class Landing extends Component {
     window.addEventListener('scroll', this.scrollTracker)
     this.timerID = setInterval(
       () => this.getApiStatus(),
-      5000
+      3000
     );
   }
 
@@ -30,19 +30,25 @@ export default class Landing extends Component {
 
   getApiStatus(values) {
     Api.health().then((response) => {
-      console.log(response)
-      this.setState({apiStatus: response});
+      const parsedReponse = JSON.parse(response)
+      console.log(parsedReponse)
+      if (parsedReponse.status && parsedReponse.status === 'ok') {
+        this.setState({apiStatus: 'OK'})
+      }
     }).catch((error) => {
-      this.setState({apiStatus: 'unreachable'});
-      console.log('API health error', error);
+      this.setState({apiStatus: 'ERROR'});
+      console.log('API error', error);
     })
   }
 
   scrollTracker = () => {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      this.setState({showTopButton: true})
+    const curState = this.state.showTopButton
+    if ((document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)) {
+      if (!curState)
+        this.setState({showTopButton: true})
     } else {
-      this.setState({showTopButton: false})
+      if (curState)
+        this.setState({showTopButton: false})
     }
   }
 
@@ -70,7 +76,8 @@ export default class Landing extends Component {
           <div className="background-image" style={{backgroundImage: `url(${hero})`}}></div>
           <h1>Sistema Modular para la integración de dispositivos inteligentes en vehículos</h1>
           <h3>Trabajo Terminal #A072</h3>
-          <Link to="/app"><button id="enter_button" className="btn clickable">Entrar</button></Link>
+          <Link to="/app"><button id="enter_button" className="btn clickable" >Entrar</button></Link>
+          <h4>{this.state.apiStatus ? `Estatus API: ${this.state.apiStatus}` : 'Conectando con servidor...'}</h4>
         </section>
 
         <section id="features" className="l features">
