@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Api from '../../api';
-import './Landing.css';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+
+import Api from '../../api'
+import './Landing.css'
 
 import hero from '../../images/hero.jpg'
 
@@ -37,7 +39,7 @@ export default class Landing extends Component {
   }
 
   scrollTracker = () => {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
       this.setState({showTopButton: true})
     } else {
       this.setState({showTopButton: false})
@@ -52,15 +54,15 @@ export default class Landing extends Component {
   render() {
     return(
       <div id="Landing">
-        <button onClick={this.backToTop} style={{display: this.state.showTopButton ? 'block' : 'none'}} id="topBtn" title="Go to top">Top</button>
+        <AnchorLink href="#header" style={{display: this.state.showTopButton ? 'block' : 'none'}} id="topBtn" title="Go to top">⬆</AnchorLink>
 
         {/* <h3>Servidor: {this.state.apiStatus}</h3> */}
-        <header className="l">
+        <header id="header" className="l">
           <Link to ="/"><h2 className="l">SMIDIV</h2></Link>
           <nav className="l">
-            <li><a href="#features" className="l">Products</a></li>
-            <li><a href="#reviews" className="l">About</a></li>
-            <li><a href="#contact" className="l">Contacts</a></li>
+            <li><AnchorLink href="#features" className="l">Products</AnchorLink></li>
+            <li><AnchorLink href="#reviews" className="l">About</AnchorLink></li>
+            <li><AnchorLink href="#contact" className="l">Contacts</AnchorLink></li>
           </nav>
         </header>
 

@@ -50,6 +50,10 @@ button {
     background: #4484CE !important;
 }
 
+button:hover {
+    background-color: rgb(17, 104, 175) !important;
+}
+
 a {
     color: #4484CE;
     text-decoration: none;
