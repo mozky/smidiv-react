@@ -43,38 +43,38 @@ export default class EditUser extends Component {
     }
   
     render() {
-        const { user } = this.props
+        const { nombre, apellidos, fechaNacimiento, correoElectronico, contraseña, repetirContraseña } = this.props
 
         const modalContent = (
             <div id="editUserForm">
                 <div className="formRow">
                     <label>
                         <span>Nombre</span>
-                        <input type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange} />
+                        <input type="text" value={nombre} name='nombre' onChange={this.handleChange} />
                     </label>
                     <label>
                         <span>Apellidos</span>
-                        <input type="text" value={this.state.apellidos} name='apellidos' onChange={this.handleChange} />
+                        <input type="text" value={apellidos} name='apellidos' onChange={this.handleChange} />
                     </label>
                 </div>
                 <div className="formRow">
                     <label>
                      <span>Fecha de nacimiento</span>
-                        <input type="text" value={this.state.fechaNacimiento} name='fechaNacimiento' onChange={this.handleChange} />
+                        <input type="text" value={fechaNacimiento} name='fechaNacimiento' onChange={this.handleChange} />
                     </label>
                     <label>
                          <span>Correo electrónico</span>
-                        <input type="text" value={this.state.correoElectronico} name='correoElectronico' onChange={this.handleChange} />
+                        <input type="text" value={correoElectronico} name='correoElectronico' onChange={this.handleChange} />
                     </label>
                 </div>
                 <div className="formRow">
                     <label>
                      <span>Contraseña</span>
-                        <input type="text" value={this.state.contraseña} name='contraseña' onChange={this.handleChange} />
+                        <input type="text" value={contraseña} name='contraseña' onChange={this.handleChange} />
                     </label>
                     <label>
                          <span>Repetir contraseña</span>
-                        <input type="text" value={this.state.repetirContraseña} name='repetirContraseña' onChange={this.handleChange} />
+                        <input type="text" value={repetirContraseña} name='repetirContraseña' onChange={this.handleChange} />
                     </label>
                 </div>
                 <div className="formButton">

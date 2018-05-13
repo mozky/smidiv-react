@@ -67,7 +67,7 @@ export default class Landing extends Component {
         <AnchorLink href="#header" style={{display: this.state.showTopButton ? 'block' : 'none'}} id="topBtn" title="Go to top">⬆</AnchorLink>
 
         <header id="header" className="l">
-          <Link to ="/"><h2 className="l">SMIDIV</h2></Link>
+          <h2 className="l">SMIDIV</h2>
           <nav className="l">
             <li><AnchorLink href="#features" className="l">Sistema SMIDIV</AnchorLink></li>
             <li><AnchorLink href="#reviews" className="l">Nosotros</AnchorLink></li>
@@ -93,22 +93,22 @@ export default class Landing extends Component {
 
           <ul className="grid l">
             <li>
-              <img src={arduino} img="arduino logo" className="moduleLogo" />
+              <img src={arduino} alt="arduino logo" className="moduleLogo" />
               <h4>Módulo Arduino</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
             <li>
-              <img src={node} img="node js logo" className="moduleLogo" />
+              <img src={node} alt="node js logo" className="moduleLogo" />
               <h4>Servidor Central</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
             <li>
-              <img src={react} img="react js logo" className="moduleLogo" />
+              <img src={react} alt="react js logo" className="moduleLogo" />
               <h4>Aplicación Web</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
             <li>
-              <img src={android} img="android logo" className="moduleLogo" />
+              <img src={android} alt="android logo" className="moduleLogo" />
               <h4>Aplicación Móvil</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
             </li>
@@ -132,7 +132,7 @@ export default class Landing extends Component {
 
         <section id="contact" className="l contact">
           <h3 className="title">Trabajo Terminal 2017 A-072</h3>	
-          <a id="linkDocumento" href="https://docs.google.com/document/d/1E6HxZzhglHsb08cchLdDYE0tO7ooVxYUGT_RJWKC73w/edit?usp=sharing" target="_blank">Documento en línea</a>
+          <a id="linkDocumento" href="https://docs.google.com/document/d/1E6HxZzhglHsb08cchLdDYE0tO7ooVxYUGT_RJWKC73w/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Documento en línea</a>
           <hr className="l"/>
         </section>
 

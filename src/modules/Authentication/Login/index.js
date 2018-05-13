@@ -1,37 +1,72 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import * as Types from '../../../types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import * as Types from '../../../types'
 
-class Login extends Component {
+export default class Login extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      username: '',
-      password: ''
-    };
-
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+      username: {
+        value: '',
+        error: false
+      },
+      password: {
+        value: '',
+        error: false
+      }
+    }
   }
 
-  handleUsernameChange(event) {
-    event.preventDefault();
-    this.setState({username: event.target.value});
+  handleInputChange = (event) => {
+    event.preventDefault()
+    this.setState({
+      [event.target.name]: {
+        value: event.target.value,
+        error: false
+      }
+    })
   }
 
-  handlePasswordChange(event) {
-    event.preventDefault();
-    this.setState({password: event.target.value});
+  handleSendButtom = (event) => {
+    event.preventDefault()
+    const { username, password } = this.state
+    const errors = {}
+
+    if (username.value === '') {
+      errors['username'] = {
+        value: '',
+        error: 'usuario requerido'
+      }
+    }
+
+    if (password.value === '') {
+      errors['password'] = {
+        value: '',
+        error: 'contraseña requerida'
+      }
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      this.setState(errors)
+    } else {
+      this.props.handleSubmit({
+        username: username.value,
+        password: password.value
+      })
+    }
   }
 
   render() {
+    const { username, password } = this.state
+
     return (
       <form className="login-form">
-        <input type="text" placeholder="usuario" value={this.state.username} onChange={this.handleUsernameChange} />
-
-        <input type="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
-        <button type="button" className="azul" onClick={() => this.props.handleSubmit(this.state)}>
+        <input type="text" name="username" placeholder={username.error || "usuario"} value={username.value} onChange={this.handleInputChange} 
+          className={username.error ? 'error' : '' } />
+        <input type="password" name="password" placeholder={password.error || "contraseña"} value={password.value} onChange={this.handleInputChange}
+          className={password.error ? 'error' : '' } />
+        <button type="button" className="azul" onClick={this.handleSendButtom}>
           Iniciar Sesión
         </button>
         <p className="message">No tienes usuario? <a title="Haz click para ir a la página de registro" className="clickable blue" onClick={(e) => this.props.goTo(Types.REGISTER, e)}>Crea una cuenta</a></p>
@@ -43,6 +78,4 @@ class Login extends Component {
 Login.propTypes = {
   handleSubmit: PropTypes.func,
   goTo: PropTypes.func,
-};
-
-export default Login;
+}

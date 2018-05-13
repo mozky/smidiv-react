@@ -1,55 +1,116 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import * as Types from '../../../types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import * as Types from '../../../types'
 
-class Register extends Component {
+export default class Register extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-    };
-
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
+      username: {
+        value: '',
+        error: false
+      },
+      password: {
+        value: '',
+        error: false
+      },
+      passwordRepeat: {
+        value: '',
+        error: false
+      },
+      email: {
+        value: '',
+        error: false
+      }
+    }
   }
 
-  handleUsernameChange(event) {
-    event.preventDefault();
-    this.setState({username: event.target.value});
+  handleInputChange = (event) => {
+    event.preventDefault()
+    this.setState({
+      [event.target.name]: {
+        value: event.target.value,
+        error: false
+      }
+    })
   }
 
-  handlePasswordChange(event) {
-    event.preventDefault();
-    this.setState({password: event.target.value});
-  }
+  handleSendButton = (event) => {
+    event.preventDefault()
+    const { username, password, passwordRepeat, email } = this.state
+    const errors = {}
 
-  handleEmailChange(event) {
-    event.preventDefault();
-    this.setState({email: event.target.value});
+    if (username.value === '') {
+      errors['username'] = {
+        value: '',
+        error: 'usuario requerido'
+      }
+    }
+
+    if (email.value === '') {
+      errors['email'] = {
+        value: '',
+        error: 'correo electrónico requerido'
+      }
+    }
+
+    if (password.value === '' || passwordRepeat.value === '') {
+      errors['password'] = {
+        value: '',
+        error: 'contraseña requerida'
+      }
+
+      errors['passwordRepeat'] = {
+        value: '',
+        error: 'repetir contraseña'
+      }
+    } else if (password.value !== passwordRepeat.value) {
+      errors['password'] = {
+        value: '',
+        error: 'contraseñas diferentes'
+      }
+
+      errors['passwordRepeat'] = {
+        value: '',
+        error: true
+      }
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      this.setState(errors)
+    } else {
+      this.props.handleSubmit({
+        username: username.value,
+        password: password.value,
+        email: email.value
+      })
+    }
   }
 
   render() {
+    const { username, password, passwordRepeat, email } = this.state
+
     return (
       <form className="register-form">
-        <input type="text" placeholder="usuario" value={this.state.username} onChange={this.handleUsernameChange} />
-        <input type="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
-        <input type="email" placeholder="correo electrónico" value={this.state.email} onChange={this.handleEmailChange}/>
-        <button type="button" onClick={() => this.props.handleSubmit(this.state)}>
+        <input type="text" name="username" placeholder={username.error || "usuario"} value={username.value} onChange={this.handleInputChange}
+          className={username.error ? 'error' : '' } />
+        <input type="email" name="email" placeholder={email.error || "correo electrónico"} value={email.value} onChange={this.handleInputChange}
+          className={email.error ? 'error' : '' } />
+        <input type="password" name="password" placeholder={password.error || "contraseña"} value={password.value} onChange={this.handleInputChange}
+          className={password.error ? 'error' : '' } />
+        <input type="password" name="passwordRepeat" placeholder="repetir contraseña" value={passwordRepeat.value} onChange={this.handleInputChange}
+          className={passwordRepeat.error ? 'error' : '' } />
+        <button type="button" onClick={this.handleSendButton}>
           Register
         </button>
         <p className="message">Ya tienes cuenta? <a title="Click to go login page" className="blue clickable" onClick={(e) => this.props.goTo(Types.LOGIN, e)}>Iniciar Sesión</a></p>
       </form>
-    );
+    )
   }
 }
 
 Register.propTypes = {
   handleSubmit: PropTypes.func,
   goTo: PropTypes.func,
-};
-
-export default Register;
+}

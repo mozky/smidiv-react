@@ -8,13 +8,10 @@ import * as Types from '../../types'
 import Api from '../../api'
 import './Authentication.css'
 
-class Authenticate extends Component {
+export default class Authenticate extends Component {
 
   constructor(props) {
     super(props)
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleRegister = this.handleRegister.bind(this)
-    this.changeTab = this.changeTab.bind(this)
     this.state = {
       referrer: this.setReferrer(this.props.location),
       activeTab: Types.LOGIN
@@ -28,7 +25,7 @@ class Authenticate extends Component {
       '/app' // Default route to redirect after login
   }
 
-  handleLogin (values) {
+  handleLogin = (values) => {
     Api.login(values).then((token) => {
       this.props.loadApp(token)
       this.props.history.replace(this.state.referrer)
@@ -37,7 +34,7 @@ class Authenticate extends Component {
     })
   }
 
-  handleRegister (values) {
+  handleRegister = (values) => {
     Api.register(values).then((token) => {
       this.props.loadApp(token)
       this.props.history.replace(this.state.referrer)
@@ -46,7 +43,7 @@ class Authenticate extends Component {
     })
   }
 
-  changeTab (newTab, e) {
+  changeTab = (newTab, e) => {
     e.preventDefault()
 
     this.setState({
@@ -83,5 +80,3 @@ class Authenticate extends Component {
 Authenticate.propTypes = {
   loadApp: PropTypes.func,
 }
-
-export default Authenticate

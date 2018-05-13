@@ -30,7 +30,6 @@ function health() {
 
 function login(request) {
   return new Promise(function (resolve, reject) {
-    // TODO: Validate the fields? later...
     const args = {
       'username': request.username,
       'password': request.password
@@ -73,7 +72,6 @@ function login(request) {
 
 function register(request) {
   return new Promise(function (resolve, reject) {
-    // TODO: Validate the fields? later...
     const args = {
       'username': request.username,
       'email': request.email,
@@ -141,7 +139,6 @@ function userGet(username) {
 function vehiclePost(request) {
   return new Promise(function(resolve, reject) {
     const token = getValidToken()
-    // TODO: Validate the fields? later...
     const args = {
       'username': request.username,
       'marca': request.marca,
