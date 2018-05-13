@@ -24,7 +24,7 @@ export default class Landing extends Component {
     window.addEventListener('scroll', this.scrollTracker)
     this.timerID = setInterval(
       () => this.getApiStatus(),
-      3000
+      2000
     );
   }
 
@@ -79,8 +79,11 @@ export default class Landing extends Component {
           <div className="background-image" style={{backgroundImage: `url(${hero})`}}></div>
           <h1>Sistema Modular para la Integración de Dispositivos Inteligentes en Vehículos, por medio del puerto OBD‐II</h1>
           <h3>Trabajo Terminal A-072</h3>
-          <Link to="/app"><button id="enter_button" className="btn clickable" >Entrar</button></Link>
-          <h4 id="apiStatus">{this.state.apiStatus ? `Estatus API: ${this.state.apiStatus}` : 'Conectando con servidor...'}</h4>
+          {this.state.apiStatus ?
+              <Link to="/app"><button id="enter_button" className="btn clickable" >Entrar</button></Link>
+            :
+              <button id="enter_button" className="btn clickable" disabled={true}>Conectando...</button>
+        }
         </section>
 
         <section id="features" className="l features">
@@ -117,13 +120,13 @@ export default class Landing extends Component {
           <h3 className="title">Nosotros</h3>
 
           <p className="quote">Mauris sit amet mauris a arcu eleifend ultricies eget ut dolor. className aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-          <p className="author">— Patrick Farrell</p>
+          <p className="author">— García Guerra Jorge Adrián</p>
 
           <p className="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
-          <p className="author">— George Smith</p>
+          <p className="author">— Muñoz Peñaloza Erick</p>
 
           <p className="quote">Donec commodo dolor augue, vitae faucibus tortor tincidunt in. Aliquam vitae leo quis mi pulvinar ornare. Integer eu iaculis metus.</p>
-          <p className="author">— Kevin Blake</p>
+          <p className="author">— Suárez Lárraga Javier</p>
         </section>
 
 

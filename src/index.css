@@ -68,3 +68,7 @@ a {
 a.blue {
     color: #4484CE !important;
 }
+
+a:hover {
+    color: #0a537b !important;
+}
