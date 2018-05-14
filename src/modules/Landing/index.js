@@ -132,7 +132,7 @@ export default class Landing extends Component {
 
         <section id="contact" className="l contact">
           <h3 className="title">Trabajo Terminal 2017 A-072</h3>	
-          <a id="linkDocumento" href="https://docs.google.com/document/d/1E6HxZzhglHsb08cchLdDYE0tO7ooVxYUGT_RJWKC73w/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Documento en línea</a>
+          <a id="linkDocumento" className="azulH" href="https://docs.google.com/document/d/1E6HxZzhglHsb08cchLdDYE0tO7ooVxYUGT_RJWKC73w/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Documento en línea</a>
           <hr className="l"/>
         </section>
 

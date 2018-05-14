@@ -27,6 +27,10 @@
     text-transform: uppercase;
 }
 
+#Navbar a:hover {
+    color: #1676c0;
+}
+
 /* Prevent double borders */
 #Navbar a:not(:last-child) {
     border-right: none; 
@@ -50,6 +54,7 @@
 /* Add a pressed button style */
 #Navbar a.selected, #Navbar a.selected:hover {
     background-color: #4298ce;
+    color: #fff;
     cursor: default;
 }
 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './Navbar.css'
 
-class Navbar extends Component {
+export default class Navbar extends Component {
     render() {
         const tabs = {
             '/app/alarma': {
@@ -51,5 +51,3 @@ class Navbar extends Component {
 Navbar.propTypes = {
     currentTab: PropTypes.string.isRequired
 }
-
-export default Navbar
