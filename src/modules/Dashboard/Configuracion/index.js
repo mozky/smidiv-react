@@ -30,23 +30,28 @@ export default class Configuracion extends Component {
 
     render() {
         return (
-            <div id = "Configuracion-menu">
-                <div className="settings">
-                    <CarIcon className="ubicaciones-icon-big gris" />
-                    <div id="carSettings">
-                        <AddCar onSummit={this.handleAddNewCar}>
-                            <AddIcon className="ubicaciones-icon-clickable verde" />
-                        </AddCar>
-                        <EditCar onSummit={this.handleCarEdit}>
-                            <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
-                        </EditCar>
-                    </div>
+            <div style={{width: '100%', paddingTop: '3em'}}>
+                <div className="title-container">
+                    <div className="titulo">Configuración</div>
                 </div>
-                <div className="settings">
-                    <UserIcon className="ubicaciones-icon-big gris" />
-                    <EditUser onSummit={this.handleUserEdit} user={this.props.user}>
-                        <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
-                    </EditUser>
+                <div id = "Configuracion-menu">
+                    <div className="settings">
+                        <CarIcon className="ubicaciones-icon-big gris" />
+                        <div id="carSettings">
+                            <AddCar onSummit={this.handleAddNewCar}>
+                                <AddIcon className="ubicaciones-icon-clickable verde" />
+                            </AddCar>
+                            <EditCar onSummit={this.handleCarEdit}>
+                                <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
+                            </EditCar>
+                        </div>
+                    </div>
+                    <div className="settings">
+                        <UserIcon className="ubicaciones-icon-big gris" />
+                        <EditUser onSummit={this.handleUserEdit} user={this.props.user}>
+                            <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
+                        </EditUser>
+                    </div>
                 </div>
             </div>
         )

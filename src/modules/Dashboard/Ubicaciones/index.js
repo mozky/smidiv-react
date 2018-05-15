@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 import DeleteIcon from 'react-icons/lib/md/delete'
+import AddIcon from 'react-icons/lib/md/add-circle'
 import ModifyIcon from 'react-icons/lib/md/settings'
 import LocationIcon from 'react-icons/lib/md/location-on'
 
+import AddUbicacion from './AddUbicacion'
+
+import 'react-table/react-table.css'
 import './Ubicaciones.css'
 
 export default class Ubicaciones extends Component {
@@ -38,8 +41,12 @@ export default class Ubicaciones extends Component {
 
         return (
             <div id="Historial">
-                <div className="titulo">Gestión de ubicaciones</div>
-                {/* <DeleteIcon /> */}
+                <div className="title-container">
+                    <div className="titulo">Gestión de ubicaciones</div>
+                    <AddUbicacion google={this.props.google}>
+                        <AddIcon className="titulo-icon clickable verde icon"/>
+                    </AddUbicacion>
+                </div>
                 <div className="tabla">
                     <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />
                 </div>
