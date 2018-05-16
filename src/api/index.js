@@ -237,6 +237,22 @@ function ubicacionFavGet(username) {
   })
 }
 
+function ubicacionFavDelete(ubicacionId) {
+  return new Promise(function(resolve, reject) {
+    fetch(API_URL + 'ubicacionFav/' + ubicacionId, {
+      method: 'DELETE',
+      headers: getValidToken()
+    })
+      .then(res => {
+        console.log('DELETE UBICACION FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 export default  {
     health,
     login,
@@ -244,5 +260,6 @@ export default  {
     userGet,
     vehiclePost,
     ubicacionFavPost,
-    ubicacionFavGet
+    ubicacionFavGet,
+    ubicacionFavDelete
 }

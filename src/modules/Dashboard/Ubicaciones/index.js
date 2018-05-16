@@ -50,6 +50,15 @@ export default class Ubicaciones extends Component {
         })
     }
 
+    deleteUbicacionFav = (ubicacionId) => {
+        Api.ubicacionFavDelete(ubicacionId)
+        .then(response => {
+            this.getUbicaciones()
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     render() {
         const columnas = [{
             Header: 'Ubicacion',
@@ -60,7 +69,8 @@ export default class Ubicaciones extends Component {
             Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
-            Cell: () => <DeleteIcon className="clickable rojo icon" />
+            accessor: '_id',
+            Cell: (accessor) => <DeleteIcon className="clickable rojo icon" onClick={() => this.deleteUbicacionFav(accessor.value)} />
         }, {
             Header: 'Mapa',
             Cell: () => <LocationIcon className="clickable azul icon" />
@@ -75,7 +85,19 @@ export default class Ubicaciones extends Component {
                     </AddUbicacion>
                 </div>
                 <div className="tabla">
-                    <ReactTable showPagination={true} defaultPageSize={10} data={this.state.ubicaciones} columns={columnas} />
+                    <ReactTable
+                        showPagination={true}
+                        defaultPageSize={10}
+                        data={this.state.ubicaciones}
+                        columns={columnas}
+                        previousText={'Anterior'}
+                        nextText={'Siguiente'}
+                        loadingText={'Cargando...'}
+                        noDataText={'Sin datos'}
+                        pageText={'Página'}
+                        ofText={'de'}
+                        rowsText={'filas'}
+                    />
                 </div>
             </div>
         )
