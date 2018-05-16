@@ -1,4 +1,4 @@
-#formMap {
-    width: 500px;
-    height: 500px;
+#ubicacionMap > div {
+    position: relative !important;
+    height: '400px';
 }

@@ -172,10 +172,77 @@ function vehiclePost(request) {
   })
 }
 
+function ubicacionFavPost(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'idUsuario': request.username,
+      'nombre': request.nombre,
+      'ubicacion': {
+        'lat': request.center.lat,
+        'lon': request.center.lng
+      }
+    }
+
+    fetch(API_URL + 'ubicacionFav', {
+      method: 'POST',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('POST UBICACION FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        return res.text()
+      })
+      .then(body => {
+        let res = JSON.parse(body)
+        if (!res.success) {
+          reject(res.message)
+        }
+        resolve(res.response)
+      }).catch(err => {
+        console.log(err)
+        reject(err)
+      })
+  })
+}
+
+function ubicacionFavGet(username) {
+  return new Promise(function(resolve, reject) {
+    fetch(API_URL + 'ubicacionFav/' + username, {
+      method: 'GET',
+      headers: getValidToken()
+    })
+      .then(res => {
+        console.log('GET UBICACION FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        return res.text()
+      })
+      .then(body => {
+        let res = JSON.parse(body)
+        if (!res.success) {
+          reject(res.message)
+        }
+        resolve(res.response)
+      }).catch(err => {
+        console.log(err)
+        reject(err)
+      })
+  })
+}
+
 export default  {
     health,
     login,
     register,
     userGet,
-    vehiclePost
+    vehiclePost,
+    ubicacionFavPost,
+    ubicacionFavGet
 }

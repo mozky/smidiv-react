@@ -27,7 +27,7 @@ class Dashboard extends Component {
                     <Route exact path={`${this.props.match.url}/about`} component={About}/>
                     <Route exact path={`${this.props.match.url}/alarma`} component={Alarmas}/>
                     <Route exact path={`${this.props.match.url}/estatus`} component={Estatus}/>
-                    <PropsRoute exact path={`${this.props.match.url}/ubicaciones`} google={this.props.google} component={Ubicaciones}/>
+                    <PropsRoute exact path={`${this.props.match.url}/ubicaciones`} google={this.props.google} user={this.props.user} component={Ubicaciones}/>
                     <PropsRoute exact path={`${this.props.match.url}/configuracion`} user={this.props.user} component={Configuracion}/>
                     <Route exact path={`${this.props.match.url}/historial`} component={Historial}/>
                 </main>

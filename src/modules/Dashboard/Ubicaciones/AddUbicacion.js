@@ -5,18 +5,20 @@ import Modal from '../Common/Modal'
 
 export default class AddUbicacion extends Component {
     constructor(props) {
-        super(props);
-        this.mapRef = React.createRef()
-        this.state = {
-            center: {
-              lat: 59.95,
-              lng: 30.33
-            },
-            zoom: 11,
-            nombre: '',
-            lat: '',
-            lon: ''
-        }
+      super(props);
+      this.mapRef = React.createRef()
+      this.state = {
+        initialCenter: {
+          lat: 19.432608,
+          lng: -99.133209
+        },
+        center: {
+          lat: 0,
+          lng: 0
+        },
+        zoom: 11,
+        nombre: ''
+      }
     }
   
     handleChange = (event) => {
@@ -26,28 +28,41 @@ export default class AddUbicacion extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
 
-      const { marca, modelo, placas, identificadorSmidiv } = this.state
-      this.props.onSummit({
-        marca,
-        modelo,
-        placas,
-        identificadorSmidiv
+      const { nombre, center } = this.state
+
+      if (nombre && center.lat && center.lng) {
+        this.props.onSummit({
+          nombre,
+          center
+        }).then((response) => {
+          this.setState({
+            nombre: ''
+          })
+        }).catch((error) => {
+          console.log('error', error)
+        })
+      }
+    }
+
+    centerMoved = (mapProps, map) => {
+      this.setState({
+        center: {
+          lat: map.center.lat(),
+          lng: map.center.lng()
+        }
       })
     }
   
     render() {
       const modalContent = (
-        <div id="addLocationForm">
-          <div className="formRow">
-            <label>
-              <span>Nombre</span>
-              <input type="text" value={this.state.marca} name='marca' onChange={this.handleChange} />
-            </label>
+        <div id="addLocationForm" style={styles.formContainer}>
+          <div style={Object.assign({}, styles.formRow, styles.formFieldRow)}>
+            <input style={styles.formField} placeholder="Ingresa un nombre..." type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange} />
           </div>
-          <div className="formRow" style={{width: '100%', height: '250px', maxHeight: '400px', marginBottom: '14px'}}>
-            <Map style={{width: '100%', height: '400px'}} google={this.props.google} zoom={this.state.zoom}></Map>
+          <div id="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
+            <Map style={styles.map} google={this.props.google} zoom={this.state.zoom} onDragend={this.centerMoved} initialCenter={this.state.initialCenter}/>
           </div>
-          <div className="formButton">
+          <div style={styles.formRow}>
             <div style={styles.button} onClick={this.handleSubmit}>Guardar</div>
           </div>
         </div>
@@ -58,7 +73,7 @@ export default class AddUbicacion extends Component {
             content={modalContent}
             title={"Añadir ubicación"}
             width="50%"
-            height="75%"
+            height="66%"
           >
             {this.props.children}
           </Modal>
@@ -67,11 +82,46 @@ export default class AddUbicacion extends Component {
 }
 
 const styles = {
-    button: {
-        cursor: 'pointer',
-        color: '#fff',
-        backgroundColor: '#4484CE',
-        padding: '1em 2em',
-        marginTop: '1em'
-    }
+  formContainer: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  formRow: {
+    width: '100%',
+    marginBottom: '15px',
+  },
+  formFieldRow: {
+    width: '150px',
+    margin: 'auto',
+  },
+  formField: {
+    outline: 0,
+    background: '#f2f2f2',
+    width: '100%',
+    border: 0,
+    padding: '15px',
+    fontSize: '14px',
+    height: '45px',
+    margin: '1em'
+  },
+  mapContainer: {
+    height: '400px',
+    width: '800px',
+    maxWidth: '100%'
+  },
+  map: {
+    height: '400px',
+    width: '800px'
+  },
+  button: {
+    cursor: 'pointer',
+    color: '#fff',
+    backgroundColor: '#4484CE',
+    padding: '1em 2em',
+    marginTop: '1em',
+    width: '120px',
+    margin: 'auto'
+  }
 }
