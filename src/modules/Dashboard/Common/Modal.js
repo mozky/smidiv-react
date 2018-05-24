@@ -47,6 +47,13 @@ export default class Modal extends Component {
             color: '#444'
         }
     }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return (nextProps.closeModal && prevState.modalIsOpen) ? 
+            { modalIsOpen: false }
+        :
+            null
+    }
   
     render() {
         const { content, title, children } = this.props

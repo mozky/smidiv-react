@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Map } from 'google-maps-react'
+import { Map, Marker } from 'google-maps-react'
 
 import Modal from '../Common/Modal'
+
+import Crosshair from '../../../images/crosshair.gif'
 
 export default class AddUbicacion extends Component {
     constructor(props) {
@@ -17,7 +19,8 @@ export default class AddUbicacion extends Component {
           lng: 0
         },
         zoom: 11,
-        nombre: ''
+        nombre: '',
+        closeModal: false
       }
     }
   
@@ -36,7 +39,12 @@ export default class AddUbicacion extends Component {
           center
         }).then((response) => {
           this.setState({
-            nombre: ''
+            nombre: '',
+            closeModal: true,
+            center: {
+              lat: 0,
+              lng: 0
+            }
           })
         }).catch((error) => {
           console.log('error', error)
@@ -46,6 +54,7 @@ export default class AddUbicacion extends Component {
 
     centerMoved = (mapProps, map) => {
       this.setState({
+        closeModal: false,
         center: {
           lat: map.center.lat(),
           lng: map.center.lng()
@@ -60,7 +69,12 @@ export default class AddUbicacion extends Component {
             <input style={styles.formField} placeholder="Ingresa un nombre..." type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange} />
           </div>
           <div id="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
-            <Map style={styles.map} google={this.props.google} zoom={this.state.zoom} onDragend={this.centerMoved} initialCenter={this.state.initialCenter}/>
+            <Map style={styles.map} google={this.props.google} zoom={this.state.zoom} onDragend={this.centerMoved} initialCenter={this.state.initialCenter}>
+              <Marker 
+                position={this.state.center.lat !== 0 ? this.state.center : this.state.initialCenter}
+                icon={Crosshair}
+              />
+            </Map>
           </div>
           <div style={styles.formRow}>
             <div style={styles.button} onClick={this.handleSubmit}>Guardar</div>
@@ -70,6 +84,7 @@ export default class AddUbicacion extends Component {
 
       return (
           <Modal
+            closeModal={this.state.closeModal}
             content={modalContent}
             title={"Añadir ubicación"}
             width="50%"
@@ -99,7 +114,7 @@ const styles = {
   formField: {
     outline: 0,
     background: '#f2f2f2',
-    width: '100%',
+    width: '175px',
     border: 0,
     padding: '15px',
     fontSize: '14px',
@@ -113,7 +128,8 @@ const styles = {
   },
   map: {
     height: '400px',
-    width: '800px'
+    width: '800px',
+    maxWidth: '100%'
   },
   button: {
     cursor: 'pointer',
