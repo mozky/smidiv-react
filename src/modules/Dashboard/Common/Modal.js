@@ -65,7 +65,7 @@ export default class Modal extends Component {
                     style={this.styles.modalStyles}
                 >
                     <div style={this.styles.modalHeader}>
-                        <div ref={subtitle => this.subtitle = subtitle}>{title}</div>
+                        <div>{title}</div>
                         <IconClose className={'clickable'} onClick={this.closeModal}></IconClose>
                     </div>
                     { content }

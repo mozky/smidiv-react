@@ -53,6 +53,10 @@
     line-height: 2em;
 }
 
+.ReactTable .rt-noData {
+    display: none;
+}
+
 .area {
     display: -webkit-box;
     display: -ms-flexbox;

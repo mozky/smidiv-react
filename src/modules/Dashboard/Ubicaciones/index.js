@@ -6,6 +6,7 @@ import ModifyIcon from 'react-icons/lib/md/settings'
 import LocationIcon from 'react-icons/lib/md/location-on'
 
 import AddUbicacion from './AddUbicacion'
+import VerUbicacion from './VerUbicacion'
 import Api from '../../../api'
 
 import 'react-table/react-table.css'
@@ -14,8 +15,10 @@ import './Ubicaciones.css'
 export default class Ubicaciones extends Component {
     constructor(props) {
         super(props)
+        this.verUbicacionRef = React.createRef();
         this.state = {
-            ubicaciones: []
+            ubicaciones: [],
+            ubicacionActiva: ''
         }
     }
 
@@ -59,6 +62,18 @@ export default class Ubicaciones extends Component {
         })
     }
 
+    toggleVerUbicacionModal = (nombreUbicacion) => {
+        Object.entries(this.state.ubicaciones).forEach(ubicacion => {
+            if (ubicacion[1].nombre == nombreUbicacion) {
+                this.setState({
+                    ubicacionActiva: ubicacion[1]
+                })
+            }
+        })
+
+        this.verUbicacionRef.current.click()
+    }
+
     render() {
         const columnas = [{
             Header: 'Ubicacion',
@@ -73,11 +88,15 @@ export default class Ubicaciones extends Component {
             Cell: (accessor) => <DeleteIcon className="clickable rojo icon" onClick={() => this.deleteUbicacionFav(accessor.value)} />
         }, {
             Header: 'Mapa',
-            Cell: () => <LocationIcon className="clickable azul icon" />
+            id: 'ubicacion',
+            Cell: (accessor) => <LocationIcon onClick={() => this.toggleVerUbicacionModal(accessor.original.nombre)} className="clickable azul icon" />
         }]
 
         return (
             <div id="Historial">
+                <VerUbicacion nombre={this.state.ubicacionActiva.nombre} center={this.state.ubicacionActiva.ubicacion} google={this.props.google}>
+                    <span ref={this.verUbicacionRef}></span>
+                </VerUbicacion>
                 <div className="title-container">
                     <div className="titulo">Gestión de ubicaciones</div>
                     <AddUbicacion onSummit={this.handleNewUbicacion} google={this.props.google}>

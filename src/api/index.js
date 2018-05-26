@@ -180,7 +180,7 @@ function ubicacionFavPost(request) {
       'nombre': request.nombre,
       'ubicacion': {
         'lat': request.center.lat,
-        'lon': request.center.lng
+        'lng': request.center.lng
       }
     }
 
