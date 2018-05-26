@@ -20,7 +20,7 @@ export default class VerUbicacion extends Component {
     render() {
       const modalContent = (
         <div id="addLocationForm" style={styles.formContainer}>
-          <div id="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
+          <div className="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
             <Map style={styles.map} google={this.props.google} zoom={16} initialCenter={this.props.center}>
               <Marker
                 title={this.props.nombre}

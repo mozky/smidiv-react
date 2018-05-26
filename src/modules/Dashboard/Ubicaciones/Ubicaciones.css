@@ -1,4 +1,4 @@
-#ubicacionMap > div {
+.ubicacionMap > div {
     position: relative !important;
     height: '400px';
 }

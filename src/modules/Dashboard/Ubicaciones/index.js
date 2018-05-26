@@ -7,6 +7,7 @@ import LocationIcon from 'react-icons/lib/md/location-on'
 
 import AddUbicacion from './AddUbicacion'
 import VerUbicacion from './VerUbicacion'
+import EditUbicacion from './EditUbicacion'
 import Api from '../../../api'
 
 import 'react-table/react-table.css'
@@ -15,7 +16,8 @@ import './Ubicaciones.css'
 export default class Ubicaciones extends Component {
     constructor(props) {
         super(props)
-        this.verUbicacionRef = React.createRef();
+        this.verUbicacionRef = React.createRef()
+        this.editUbicacionRef = React.createRef()
         this.state = {
             ubicaciones: [],
             ubicacionActiva: ''
@@ -53,6 +55,20 @@ export default class Ubicaciones extends Component {
         })
     }
 
+    handleEditUbicacion = (values) => {
+        return new Promise((resolve, reject) => {
+            Api.ubicacionFavPatch(values)
+            .then(response => {
+                resolve(response)
+                this.getUbicaciones()
+            })
+            .catch(err => {
+                console.log(err)
+                reject(err)
+            })
+        })
+    }
+
     deleteUbicacionFav = (ubicacionId) => {
         Api.ubicacionFavDelete(ubicacionId)
         .then(response => {
@@ -62,21 +78,29 @@ export default class Ubicaciones extends Component {
         })
     }
 
-    toggleVerUbicacionModal = (nombreUbicacion) => {
+    setUbicacionActiva = (nombreUbicacion, callback) => {
         Object.entries(this.state.ubicaciones).forEach(ubicacion => {
             if (ubicacion[1].nombre === nombreUbicacion) {
                 this.setState({
                     ubicacionActiva: ubicacion[1]
-                })
+                }, callback)
             }
         })
+    }
 
-        this.verUbicacionRef.current.click()
+    toggleVerUbicacionModal = (nombreUbicacion) => {
+        this.setUbicacionActiva(nombreUbicacion, this.verUbicacionRef.current.click())
+
+    }
+
+    toggleEditUbicacionModal = (nombreUbicacion) => {
+        console.log(nombreUbicacion, 'edit')
+        this.setUbicacionActiva(nombreUbicacion, this.editUbicacionRef.current.click())
     }
 
     render() {
         const columnas = [{
-            Header: 'Ubicacion',
+            Header: 'Ubicación',
             accessor: 'nombre',
             width: 250
         }, {
@@ -93,7 +117,8 @@ export default class Ubicaciones extends Component {
             Cell: (accessor) => <LocationIcon onClick={() => this.toggleVerUbicacionModal(accessor.original.nombre)} className="clickable azul icon" />
         }, {
             Header: 'Modificar',
-            Cell: () => <ModifyIcon className="clickable amarillo icon" />
+            id: 'edit',
+            Cell: (accessor) => <ModifyIcon onClick={() => this.toggleEditUbicacionModal(accessor.original.nombre)} className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
             accessor: '_id',
@@ -105,6 +130,9 @@ export default class Ubicaciones extends Component {
                 <VerUbicacion nombre={this.state.ubicacionActiva.nombre} center={this.state.ubicacionActiva.ubicacion} google={this.props.google}>
                     <span ref={this.verUbicacionRef}></span>
                 </VerUbicacion>
+                <EditUbicacion onSummit={this.handleEditUbicacion} ubicacion={this.state.ubicacionActiva} google={this.props.google}>
+                    <span ref={this.editUbicacionRef}></span>
+                </EditUbicacion>
                 <div className="title-container">
                     <div className="titulo">Gestión de ubicaciones</div>
                     <AddUbicacion onSummit={this.handleNewUbicacion} google={this.props.google}>

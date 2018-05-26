@@ -261,6 +261,32 @@ function ubicacionFavDelete(ubicacionId) {
   })
 }
 
+function ubicacionFavPatch(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'idUbicacion': request.ubicacionId,
+      'nombre': request.nombre,
+      'ubicacion': request.center
+    }
+
+    fetch(API_URL + 'ubicacionFav/', {
+      method: 'PATCH',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('PATCH UBICACION FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 export default  {
     health,
     login,
@@ -269,5 +295,6 @@ export default  {
     vehiclePost,
     ubicacionFavPost,
     ubicacionFavGet,
-    ubicacionFavDelete
+    ubicacionFavDelete,
+    ubicacionFavPatch
 }
