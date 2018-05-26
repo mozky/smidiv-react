@@ -108,13 +108,13 @@ const styles = {
     marginBottom: '15px',
   },
   formFieldRow: {
-    width: '150px',
+    width: '350px',
     margin: 'auto',
   },
   formField: {
     outline: 0,
     background: '#f2f2f2',
-    width: '175px',
+    width: '100%',
     border: 0,
     padding: '15px',
     fontSize: '14px',

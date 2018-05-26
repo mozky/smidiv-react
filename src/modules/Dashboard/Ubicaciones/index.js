@@ -80,16 +80,24 @@ export default class Ubicaciones extends Component {
             accessor: 'nombre',
             width: 250
         }, {
+            Header: 'Latitud',
+            accessor: 'ubicacion.lat',
+            width: 250
+        }, {
+            Header: 'Longitud',
+            accessor: 'ubicacion.lng',
+            width: 250
+        }, {
+            Header: 'Mapa',
+            id: 'ubicacion',
+            Cell: (accessor) => <LocationIcon onClick={() => this.toggleVerUbicacionModal(accessor.original.nombre)} className="clickable azul icon" />
+        }, {
             Header: 'Modificar',
             Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
             accessor: '_id',
             Cell: (accessor) => <DeleteIcon className="clickable rojo icon" onClick={() => this.deleteUbicacionFav(accessor.value)} />
-        }, {
-            Header: 'Mapa',
-            id: 'ubicacion',
-            Cell: (accessor) => <LocationIcon onClick={() => this.toggleVerUbicacionModal(accessor.original.nombre)} className="clickable azul icon" />
         }]
 
         return (
