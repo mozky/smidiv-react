@@ -239,9 +239,17 @@ function ubicacionFavGet(username) {
 
 function ubicacionFavDelete(ubicacionId) {
   return new Promise(function(resolve, reject) {
-    fetch(API_URL + 'ubicacionFav/' + ubicacionId, {
+    const token = getValidToken()
+    const args = {
+      'idUbicacion': ubicacionId,
+    }
+
+    fetch(API_URL + 'ubicacionFav/', {
       method: 'DELETE',
-      headers: getValidToken()
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
     })
       .then(res => {
         console.log('DELETE UBICACION FAV', res.ok, res.status, res.statusText)

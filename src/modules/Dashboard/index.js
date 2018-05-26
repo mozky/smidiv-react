@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import { AdminRoute, PropsRoute } from '../Helpers'
+import { PropsRoute } from '../Helpers'
 import Header from './Header'
 import Navbar from './Navbar'
 import Footer from './Footer'

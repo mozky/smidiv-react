@@ -64,7 +64,7 @@ export default class Ubicaciones extends Component {
 
     toggleVerUbicacionModal = (nombreUbicacion) => {
         Object.entries(this.state.ubicaciones).forEach(ubicacion => {
-            if (ubicacion[1].nombre == nombreUbicacion) {
+            if (ubicacion[1].nombre === nombreUbicacion) {
                 this.setState({
                     ubicacionActiva: ubicacion[1]
                 })
