@@ -3,8 +3,6 @@ import { Map, Marker } from 'google-maps-react'
 
 import Modal from '../Common/Modal'
 
-import Crosshair from '../../../images/crosshair.gif'
-
 export default class VerUbicacion extends Component {
     constructor(props) {
       super(props);
@@ -23,7 +21,7 @@ export default class VerUbicacion extends Component {
       const modalContent = (
         <div id="addLocationForm" style={styles.formContainer}>
           <div id="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
-            <Map style={styles.map} google={this.props.google} zoom={11} initialCenter={this.props.center}>
+            <Map style={styles.map} google={this.props.google} zoom={16} initialCenter={this.props.center}>
               <Marker
                 title={this.props.nombre}
                 name={this.props.nombre}
