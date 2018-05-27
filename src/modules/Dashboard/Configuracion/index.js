@@ -39,10 +39,20 @@ export default class Configuracion extends Component {
     }
 
     handleCarEdit = (values) => {
-     console.log('No ')
+     console.log('TODO: Update car values', values)
     }
 
     render() {
+        const carItem = (!this.props.user.vehiculo) ? (
+            <AddCar onSummit={this.handleAddNewCar}>
+            <AddIcon className="ubicaciones-icon-clickable verde" />
+             </AddCar>
+        ) : (
+            <EditCar onSummit={this.handleCarEdit} vehiculo={this.props.user.vehiculo}>
+                <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
+            </EditCar>
+        )
+
         return (
             <div style={{width: '100%', paddingTop: '3em'}}>
                 <div className="title-container">
@@ -52,12 +62,7 @@ export default class Configuracion extends Component {
                     <div className="settings">
                         <CarIcon className="ubicaciones-icon-big gris" />
                         <div id="carSettings">
-                            <AddCar onSummit={this.handleAddNewCar}>
-                                <AddIcon className="ubicaciones-icon-clickable verde" />
-                            </AddCar>
-                            <EditCar onSummit={this.handleCarEdit}>
-                                <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
-                            </EditCar>
+                            {carItem}
                         </div>
                     </div>
                     <div className="settings">

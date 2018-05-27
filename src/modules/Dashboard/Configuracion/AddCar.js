@@ -10,7 +10,7 @@ export default class AddCar extends Component {
             marca: '',
             modelo: '',
             placas: '',
-            identificadorSmidiv: ''
+            smidivID: ''
         }
     }
   
@@ -21,19 +21,19 @@ export default class AddCar extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
 
-      const { marca, modelo, placas, identificadorSmidiv } = this.state
+      const { marca, modelo, placas, smidivID } = this.state
       this.props.onSummit({
         marca,
         modelo,
         placas,
-        identificadorSmidiv
+        smidivID
       }).then((response) => {
         this.closeRef.current.closeModal()
         this.setState({
           marca: '',
           modelo: '',
           placas: '',
-          identificadorSmidiv: ''
+          smidivID: ''
         })
       }).catch((error) => {
         console.log('error', error)
@@ -60,7 +60,7 @@ export default class AddCar extends Component {
           </label>
           <label>
             <span>Identificador SMIDIV</span>
-            <input type="text" value={this.state.identificadorSmidiv} name='identificadorSmidiv' onChange={this.handleChange} />
+            <input type="text" value={this.state.smidivID} name='smidivID' onChange={this.handleChange} />
           </label>
         </div>
         <div className="formButton">

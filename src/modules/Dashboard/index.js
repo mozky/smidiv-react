@@ -17,11 +17,11 @@ import { GoogleApiWrapper } from 'google-maps-react'
 
 class Dashboard extends Component {
     render() {
-        const { user, handleLogout, location, forceRefresh, google, match } = this.props
+        const { user, handleLogout, location, refreshData, google, match } = this.props
 
         return (
             <div id="Dashboard">
-                <Header username={user.username} handleLogout={handleLogout}/>
+                <Header name={user.profile ? user.profile.firstName : ''} handleLogout={handleLogout}/>
                 <Navbar currentTab={location.pathname}/>
                 <main id="Content" className="area">
                     <Route exact path={match.url} component={Home}/>
@@ -30,7 +30,7 @@ class Dashboard extends Component {
                     <Route exact path={`${match.url}/alarma`} component={Alarmas}/>
                     <Route exact path={`${match.url}/estatus`} component={Estatus}/>
                     <PropsRoute exact path={`${match.url}/ubicaciones`} google={google} user={user} component={Ubicaciones}/>
-                    <PropsRoute exact path={`${match.url}/configuracion`} user={user} refreshData={forceRefresh} component={Configuracion}/>
+                    <PropsRoute exact path={`${match.url}/configuracion`} user={user} refreshData={refreshData} component={Configuracion}/>
                     <Route exact path={`${match.url}/historial`} component={Historial}/>
                 </main>
                 <Footer />

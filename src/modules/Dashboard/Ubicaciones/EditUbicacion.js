@@ -8,13 +8,11 @@ import Crosshair from '../../../images/crosshair.gif'
 export default class EditUbicacion extends Component {
     constructor(props) {
       super(props)
-      console.log('edit modal constructor!')
+      this.closeRef = React.createRef()
       this.state = {
         center: {},
         zoom: 11,
-        nombre: '',
-        closeModal: false
-      }
+        nombre: '',      }
     }
   
     handleChange = (event) => {
@@ -33,9 +31,9 @@ export default class EditUbicacion extends Component {
                 center
             }).then((response) => {
                 console.log('editsubmited!', response)
+                this.closeRef.current.closeModal()
                 this.setState({
                     nombre: '',
-                    closeModal: true,
                     center: {}
                 })
             }).catch((error) => {
@@ -46,7 +44,6 @@ export default class EditUbicacion extends Component {
 
     centerMoved = (mapProps, map) => {
       this.setState({
-        closeModal: false,
         center: {
           lat: map.center.lat(),
           lng: map.center.lng()
@@ -62,10 +59,10 @@ export default class EditUbicacion extends Component {
                 </div>
                 <div className="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
                     <Map style={styles.map} google={this.props.google} zoom={this.state.zoom} onDragend={this.centerMoved} initialCenter={this.props.ubicacion.ubicacion}>
-                    <Marker 
-                        position={this.state.center.lat ? this.state.center : this.props.ubicacion.ubicacion}
-                        icon={Crosshair}
-                    />
+                        <Marker 
+                            position={this.state.center.lat ? this.state.center : this.props.ubicacion.ubicacion}
+                            icon={Crosshair}
+                        />
                     </Map>
                 </div>
                 <div style={styles.formRow}>
@@ -76,7 +73,7 @@ export default class EditUbicacion extends Component {
 
         return (
             <Modal
-                closeModal={this.state.closeModal}
+                ref={this.closeRef}
                 content={modalContent}
                 title={`Editar ubicación - ${this.props.ubicacion.nombre}`}
                 width="50%"

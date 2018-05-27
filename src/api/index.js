@@ -173,7 +173,8 @@ function vehiclePost(request) {
       'username': request.username,
       'marca': request.marca,
       'modelo': request.modelo,
-      'placas': request.placas
+      'placas': request.placas,
+      'smidivID': request.smidivID
     }
 
     fetch(API_URL + 'vehicle', {

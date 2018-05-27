@@ -58,6 +58,20 @@ export default class EditUser extends Component {
             console.log('error', error)
         })
     }
+
+    formatDate = (date) => {
+        const d = new Date(date)
+        const year = d.getFullYear()
+        let month = '' + (d.getMonth() + 1)
+        let day = '' + d.getDate()
+    
+        // if (month.length < 2)
+        //     month = '0' + month
+        // if (day.length < 2)
+        //     day = '0' + day
+    
+        return [year, month, day].join('-');
+    }
   
     render() {
         const { nombre, apellidos, fechaNacimiento, correoElectronico, contraseña, repetirContraseña } = this.state
@@ -77,7 +91,7 @@ export default class EditUser extends Component {
                 <div className="formRow">
                     <label>
                      <span>Fecha de nacimiento</span>
-                        <input type="date" value={fechaNacimiento} name='fechaNacimiento' onChange={this.handleChange} />
+                        <input type="date" value={this.formatDate(fechaNacimiento)} name='fechaNacimiento' onChange={this.handleChange} />
                     </label>
                     <label>
                          <span>Correo electrónico</span>

@@ -6,10 +6,10 @@ export default class EditCar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            marca: '',
-            modelo: '',
-            placas: '',
-            identificadorSmidiv: ''
+            marca: props.vehiculo.marca,
+            modelo: props.vehiculo.modelo,
+            placas: props.vehiculo.placas,
+            smidivID: props.vehiculo.smidivID
         }
     }
   
@@ -20,12 +20,12 @@ export default class EditCar extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
 
-      const { marca, modelo, placas, identificadorSmidiv } = this.state
+      const { marca, modelo, placas, smidivID } = this.state
       this.props.onSummit({
         marca,
         modelo,
         placas,
-        identificadorSmidiv
+        smidivID
       })
     }
   
@@ -35,7 +35,7 @@ export default class EditCar extends Component {
         <div className="formRow">
           <label>
             <span>Marca</span>
-            <input type="text" value={this.state.marca} name='marca' onChange={this.handleChange} />
+            <input type="text" value={this.state.marca.nombre} name='marca' onChange={this.handleChange} />
           </label>
           <label>
             <span>Modelo</span>
@@ -49,7 +49,7 @@ export default class EditCar extends Component {
           </label>
           <label>
             <span>Identificador SMIDIV</span>
-            <input type="text" value={this.state.identificadorSmidiv} name='identificadorSmidiv' onChange={this.handleChange} />
+            <input type="text" value={this.state.smidivID} name='smidivID' onChange={this.handleChange} />
           </label>
         </div>
         <div className="formButton">

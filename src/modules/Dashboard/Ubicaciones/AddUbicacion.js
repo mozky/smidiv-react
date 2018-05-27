@@ -8,7 +8,7 @@ import Crosshair from '../../../images/crosshair.gif'
 export default class AddUbicacion extends Component {
     constructor(props) {
       super(props);
-      this.mapRef = React.createRef()
+      this.closeRef = React.createRef()
       this.state = {
         initialCenter: {
           lat: 19.432608,
@@ -38,9 +38,9 @@ export default class AddUbicacion extends Component {
           nombre,
           center
         }).then((response) => {
+          this.closeRef.current.closeModal()
           this.setState({
             nombre: '',
-            closeModal: true,
             center: {
               lat: 0,
               lng: 0
@@ -54,7 +54,6 @@ export default class AddUbicacion extends Component {
 
     centerMoved = (mapProps, map) => {
       this.setState({
-        closeModal: false,
         center: {
           lat: map.center.lat(),
           lng: map.center.lng()
@@ -68,7 +67,7 @@ export default class AddUbicacion extends Component {
           <div style={Object.assign({}, styles.formRow, styles.formFieldRow)}>
             <input style={styles.formField} placeholder="Ingresa un nombre..." type="text" value={this.state.nombre} name='nombre' onChange={this.handleChange} />
           </div>
-          <div id="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
+          <div className="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
             <Map style={styles.map} google={this.props.google} zoom={this.state.zoom} onDragend={this.centerMoved} initialCenter={this.state.initialCenter}>
               <Marker 
                 position={this.state.center.lat !== 0 ? this.state.center : this.state.initialCenter}
@@ -84,11 +83,11 @@ export default class AddUbicacion extends Component {
 
       return (
           <Modal
-            closeModal={this.state.closeModal}
+            ref={this.closeRef}
             content={modalContent}
             title={"Añadir ubicación"}
             width="50%"
-            height="66%"
+            height="67%"
           >
             {this.props.children}
           </Modal>
