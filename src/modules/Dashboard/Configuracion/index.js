@@ -13,15 +13,29 @@ import './Configuracion.css'
 
 export default class Configuracion extends Component {
     handleAddNewCar = (values) => {
-        Api.vehiclePost(Object.assign(values, { username: this.props.user.username })).then((car) => {
-            console.log(car)
-        }).catch((error) => {
-            console.log('Error!', error)
+        return new Promise((resolve, reject) => {
+            Api.vehiclePost(Object.assign(values, { username: this.props.user.username })).then((car) => {
+                console.log('Nuevo vehiculo agregado', car)
+                this.props.refreshData()
+                resolve()
+            }).catch((error) => {
+                console.log('Error #handleAddNewCar', error)
+                reject()
+            })
         })
     }
 
     handleUserEdit = (values) => {
-        console.log('TODO - Add user edit:', values)
+        return new Promise((resolve, reject) => {
+            Api.userPatch(Object.assign(values, { username: this.props.user.username })).then((user) => {
+                console.log('Usuario editado', user)
+                this.props.refreshData()
+                resolve()
+            }).catch((error) => {
+                console.log('Error #handleAddNewCar', error)
+                reject()
+            })
+        })
     }
 
     handleCarEdit = (values) => {

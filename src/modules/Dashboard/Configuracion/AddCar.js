@@ -4,7 +4,8 @@ import Modal from '../Common/Modal'
 
 export default class AddCar extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+        this.closeRef = React.createRef()
         this.state = {
             marca: '',
             modelo: '',
@@ -26,6 +27,16 @@ export default class AddCar extends Component {
         modelo,
         placas,
         identificadorSmidiv
+      }).then((response) => {
+        this.closeRef.current.closeModal()
+        this.setState({
+          marca: '',
+          modelo: '',
+          placas: '',
+          identificadorSmidiv: ''
+        })
+      }).catch((error) => {
+        console.log('error', error)
       })
     }
   
@@ -60,8 +71,11 @@ export default class AddCar extends Component {
 
       return (
           <Modal
+            ref={this.closeRef}
             content={modalContent}
             title={"Añadir vehículo"}
+            width="35%"
+            height="38%"
           >
             {this.props.children}
           </Modal>

@@ -136,6 +136,36 @@ function userGet(username) {
   })
 }
 
+function userPatch(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      password: request.contraseña,
+      email: request.correoElectronico,
+      profile: {
+        firstName: request.nombre,
+        lastName: request.apellidos,
+        birthday: request.fechaDeNacimiento
+      }
+    }
+
+    fetch(API_URL + 'user/' + request.username, {
+      method: 'PATCH',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('PATCH USER FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 function vehiclePost(request) {
   return new Promise(function(resolve, reject) {
     const token = getValidToken()
@@ -165,6 +195,7 @@ function vehiclePost(request) {
         if (!res.success) {
           reject(res.message)
         }
+        resolve(res.response)
       }).catch(err => {
         console.log(err)
         reject(err)
@@ -292,6 +323,7 @@ export default  {
     login,
     register,
     userGet,
+    userPatch,
     vehiclePost,
     ubicacionFavPost,
     ubicacionFavGet,

@@ -62,6 +62,8 @@ export default class EditCar extends Component {
           <Modal
             content={modalContent}
             title={"Editar vehículo"}
+            width="35%"
+            height="36%"
           >
             {this.props.children}
           </Modal>

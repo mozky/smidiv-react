@@ -90,7 +90,6 @@ export default class Ubicaciones extends Component {
 
     toggleVerUbicacionModal = (nombreUbicacion) => {
         this.setUbicacionActiva(nombreUbicacion, this.verUbicacionRef.current.click())
-
     }
 
     toggleEditUbicacionModal = (nombreUbicacion) => {

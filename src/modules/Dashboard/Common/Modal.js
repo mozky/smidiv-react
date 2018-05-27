@@ -58,22 +58,22 @@ export default class Modal extends Component {
     render() {
         const { content, title, children } = this.props
         return (
-            <div>
-                <ReactModal
-                    isOpen={this.state.modalIsOpen}
-                    onRequestClose={this.closeModal}
-                    style={this.styles.modalStyles}
-                >
-                    <div style={this.styles.modalHeader}>
-                        <div>{title}</div>
-                        <IconClose className={'clickable'} onClick={this.closeModal}></IconClose>
+                <div>
+                    <ReactModal
+                        isOpen={this.state.modalIsOpen}
+                        onRequestClose={this.closeModal}
+                        style={this.styles.modalStyles}
+                    >
+                        <div style={this.styles.modalHeader}>
+                            <div>{title}</div>
+                            <IconClose className={'clickable'} onClick={this.closeModal}></IconClose>
+                        </div>
+                        { content }
+                    </ReactModal>
+                    <div onClick={this.openModal}>
+                        {children}
                     </div>
-                    { content }
-                </ReactModal>
-                <div onClick={this.openModal}>
-                    {children}
                 </div>
-            </div>
         )
     }
 }
