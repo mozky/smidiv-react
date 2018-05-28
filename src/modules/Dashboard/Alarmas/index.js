@@ -5,6 +5,7 @@ import DeleteIcon from 'react-icons/lib/md/delete'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import ModifyIcon from 'react-icons/lib/md/settings'
 import AlarmOffIcon from 'react-icons/lib/md/alarm-off'
+import AlarmIcon from 'react-icons/lib/md/access-alarm'
 
 import AddAlarma from './AddAlarma'
 import './Alarmas.css'
@@ -24,6 +25,25 @@ export default class Alarmas extends Component {
 
         return new Promise((resolve, reject) => {
             Api.alarmaPost(nuevaAlarma)
+            .then(response => {
+                resolve(response)
+                this.props.bundle.refreshData()
+            })
+            .catch(err => {
+                console.log(err)
+                reject(err)
+            })
+        })
+    }
+
+    toggleAlarma = (idAlarma, estadoActual) => {
+        const values = {
+            idAlarma,
+            estado: !estadoActual
+        }
+
+        return new Promise((resolve, reject) => {
+            Api.alarmaPatch(values)
             .then(response => {
                 resolve(response)
                 this.props.bundle.refreshData()
@@ -60,9 +80,15 @@ export default class Alarmas extends Component {
             accessor: '_id',
             Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
-            Header: 'Silenciar',
+            Header: 'Estado',
             accessor: '_id',
-            Cell: () => <AlarmOffIcon className="clickable azul icon" />
+            Cell: (accessor) => {
+                if (accessor.original.estado) {
+                    return <AlarmIcon className="clickable azul icon" onClick={() => this.toggleAlarma(accessor.value, true)} />
+                } else {
+                    return <AlarmOffIcon className="clickable azul icon" onClick={() => this.toggleAlarma(accessor.value, false)} />
+                }
+            }
         }, {
             Header: 'Eliminar',
             accessor: '_id',

@@ -411,6 +411,32 @@ function alarmaDelete(alarmaId) {
   })
 }
 
+function alarmaPatch(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'idAlarma': request.idAlarma,
+      'nombre': request.nombre,
+      'estado': request.estado
+    }
+
+    fetch(API_URL + 'alarma/', {
+      method: 'PATCH',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('PATCH ALARMA FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 export default  {
   login,
   health,
@@ -419,6 +445,7 @@ export default  {
   userPatch,
   alarmaGet,
   alarmaPost,
+  alarmaPatch,
   vehiclePost,
   alarmaDelete,
   ubicacionFavGet,
