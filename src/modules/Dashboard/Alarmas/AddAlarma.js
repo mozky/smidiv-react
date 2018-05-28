@@ -9,7 +9,7 @@ export default class AddAlarma extends Component {
         this.state = {
             tipo: 'ubicacion',
             nombre: '',
-            ubicacionFav: ''
+            ubicacion: ''
         }
     }
   
@@ -20,12 +20,12 @@ export default class AddAlarma extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
 
-      const { tipo, nombre, ubicacionFav } = this.state
+      const { tipo, nombre, ubicacion } = this.state
 
       if (nombre && tipo) {
         this.props.onSummit({
             nombre,
-            ubicacionFav
+            ubicacionFav: ubicacion
         }).then((response) => {
             this.modalRef.current.closeModal()
             this.setState({
@@ -78,7 +78,7 @@ export default class AddAlarma extends Component {
                 <div style={styles.formFieldRow}>
                     <label >
                         <span>Ubicacion</span>
-                        <input type="radio" value="ubicacionFav" name="tipo" onChange={this.handleChange} checked={tipo === 'ubicacion'} />
+                        <input type="radio" value="ubicacion" name="tipo" onChange={this.handleChange} checked={tipo === 'ubicacion'} />
                     </label>
                     <label>
                         <span>Horario</span>
