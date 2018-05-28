@@ -59,7 +59,7 @@ export default class Historial extends Component {
         }]
 
         return (
-            <div id="Historial">
+            <div id="Historial" className="DashboardPage">
                 <div className="titulo">Historial del automóvil</div>
                 <div className="tabla">
                     <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />

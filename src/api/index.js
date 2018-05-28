@@ -122,13 +122,17 @@ function userGet(username) {
       .then(res => {
         console.log('GET USER', res.ok, res.status, res.statusText)
         if (res.status === 200) {
-          resolve(res.text())
+          return res.text()
         } else if (res.status === 403) {
           console.log('token expired or user revoked access')
           RemoveToken()
+          reject(res.status)
         } else {
           reject(res.status)
         }
+      }).then(body => {
+        let user = JSON.parse(body)
+        resolve(user)
       }).catch(err => {
         console.log(err)
         reject(err)
@@ -319,15 +323,106 @@ function ubicacionFavPatch(request) {
   })
 }
 
+function alarmaPost(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'username': request.username,
+      'vehiculo': request.nombre,
+      'ubicacionFav': request.ubicacionFav,
+      'nombre': request.nombre
+    }
+
+    fetch(API_URL + 'alarma', {
+      method: 'POST',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('POST UBICACION FAV', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        return res.text()
+      })
+      .then(body => {
+        let res = JSON.parse(body)
+        console.log('res', res)
+        if (!res.success) {
+          reject(res.message)
+        }
+        resolve(res.response)
+      }).catch(err => {
+        console.log(err)
+        reject(err)
+      })
+  })
+}
+
+function alarmaGet(username) {
+  return new Promise(function(resolve, reject) {
+    const headers = getValidToken()
+    fetch(API_URL + 'alarma/' + username, {
+      headers
+    })
+    .then(res => {
+      console.log('GET ALARMAS', res.ok, res.status, res.statusText)
+      if (res.status === 200) {
+        return res.text()
+      } else if (res.status === 403) {
+
+        reject(res.status)
+      } else {
+        reject(res.status)
+      }
+    }).then(body => {
+      const response = JSON.parse(body).response
+      resolve(response)
+    }).catch(err => {
+      console.log(err)
+      reject(err)
+    })
+  })
+}
+
+function alarmaDelete(alarmaId) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'idAlarma': alarmaId,
+    }
+
+    fetch(API_URL + 'alarma/', {
+      method: 'DELETE',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('DELETE ALARMA', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 export default  {
-    health,
-    login,
-    register,
-    userGet,
-    userPatch,
-    vehiclePost,
-    ubicacionFavPost,
-    ubicacionFavGet,
-    ubicacionFavDelete,
-    ubicacionFavPatch
+  login,
+  health,
+  userGet,
+  register,
+  userPatch,
+  alarmaGet,
+  alarmaPost,
+  vehiclePost,
+  alarmaDelete,
+  ubicacionFavGet,
+  ubicacionFavPost,
+  ubicacionFavPatch,
+  ubicacionFavDelete,
 }

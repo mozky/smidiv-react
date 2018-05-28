@@ -7,7 +7,7 @@ import Crosshair from '../../../images/crosshair.gif'
 
 export default class AddUbicacion extends Component {
     constructor(props) {
-      super(props);
+      super(props)
       this.closeRef = React.createRef()
       this.state = {
         initialCenter: {
@@ -19,8 +19,7 @@ export default class AddUbicacion extends Component {
           lng: 0
         },
         zoom: 11,
-        nombre: '',
-        closeModal: false
+        nombre: ''
       }
     }
   

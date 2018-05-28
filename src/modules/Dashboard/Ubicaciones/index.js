@@ -19,25 +19,8 @@ export default class Ubicaciones extends Component {
         this.verUbicacionRef = React.createRef()
         this.editUbicacionRef = React.createRef()
         this.state = {
-            ubicaciones: [],
             ubicacionActiva: ''
         }
-    }
-
-    componentDidMount() {
-        this.getUbicaciones()
-    }
-
-    getUbicaciones = () => {
-        Api.ubicacionFavGet(this.props.user.username)
-        .then((response) => {
-            this.setState({
-                ubicaciones: response.ubicaciones
-            })
-        })
-        .catch((err) => {
-            console.log(err)
-        })
     }
 
     handleNewUbicacion = (values) => {
@@ -46,7 +29,7 @@ export default class Ubicaciones extends Component {
             Api.ubicacionFavPost(values)
             .then(response => {
                 resolve(response)
-                this.getUbicaciones()
+                this.props.refreshData()
             })
             .catch(err => {
                 console.log(err)
@@ -60,7 +43,7 @@ export default class Ubicaciones extends Component {
             Api.ubicacionFavPatch(values)
             .then(response => {
                 resolve(response)
-                this.getUbicaciones()
+                this.props.refreshData()
             })
             .catch(err => {
                 console.log(err)
@@ -72,14 +55,14 @@ export default class Ubicaciones extends Component {
     deleteUbicacionFav = (ubicacionId) => {
         Api.ubicacionFavDelete(ubicacionId)
         .then(response => {
-            this.getUbicaciones()
+            this.props.refreshData()
         }).catch(err => {
             console.log(err)
         })
     }
 
     setUbicacionActiva = (nombreUbicacion, callback) => {
-        Object.entries(this.state.ubicaciones).forEach(ubicacion => {
+        Object.entries(this.props.ubicaciones).forEach(ubicacion => {
             if (ubicacion[1].nombre === nombreUbicacion) {
                 this.setState({
                     ubicacionActiva: ubicacion[1]
@@ -125,7 +108,7 @@ export default class Ubicaciones extends Component {
         }]
 
         return (
-            <div id="Historial">
+            <div id="Ubicaciones" className="DashboardPage">
                 <VerUbicacion nombre={this.state.ubicacionActiva.nombre} center={this.state.ubicacionActiva.ubicacion} google={this.props.google}>
                     <span ref={this.verUbicacionRef}></span>
                 </VerUbicacion>
@@ -142,7 +125,7 @@ export default class Ubicaciones extends Component {
                     <ReactTable
                         showPagination={true}
                         defaultPageSize={10}
-                        data={this.state.ubicaciones}
+                        data={this.props.ubicaciones}
                         columns={columnas}
                         previousText={'Anterior'}
                         nextText={'Siguiente'}

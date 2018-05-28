@@ -17,7 +17,14 @@ import { GoogleApiWrapper } from 'google-maps-react'
 
 class Dashboard extends Component {
     render() {
-        const { user, handleLogout, location, refreshData, google, match } = this.props
+        const { user, handleLogout, location, refreshData, google, match, ubicaciones, alarmas } = this.props
+
+        const bundle = {
+            user,
+            ubicaciones,
+            refreshData,
+            alarmas
+        }
 
         return (
             <div id="Dashboard">
@@ -27,9 +34,9 @@ class Dashboard extends Component {
                     <Route exact path={match.url} component={Home}/>
                     <Route exact path={`${match.url}/404`} render={() => <div>TODO: 404 page</div>}/>
                     <Route exact path={`${match.url}/about`} component={About}/>
-                    <Route exact path={`${match.url}/alarma`} component={Alarmas}/>
                     <Route exact path={`${match.url}/estatus`} component={Estatus}/>
-                    <PropsRoute exact path={`${match.url}/ubicaciones`} google={google} user={user} component={Ubicaciones}/>
+                    <PropsRoute exact path={`${match.url}/alarma`} bundle={bundle} component={Alarmas}/>
+                    <PropsRoute exact path={`${match.url}/ubicaciones`} google={google} refreshData={refreshData} user={user} ubicaciones={ubicaciones} component={Ubicaciones}/>
                     <PropsRoute exact path={`${match.url}/configuracion`} user={user} refreshData={refreshData} component={Configuracion}/>
                     <Route exact path={`${match.url}/historial`} component={Historial}/>
                 </main>
