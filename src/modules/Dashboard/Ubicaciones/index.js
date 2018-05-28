@@ -24,12 +24,12 @@ export default class Ubicaciones extends Component {
     }
 
     handleNewUbicacion = (values) => {
-        values.username = this.props.user.username
+        values.username = this.props.bundle.user.username
         return new Promise((resolve, reject) => {
             Api.ubicacionFavPost(values)
             .then(response => {
                 resolve(response)
-                this.props.refreshData()
+                this.props.bundle.refreshData()
             })
             .catch(err => {
                 console.log(err)
@@ -43,7 +43,7 @@ export default class Ubicaciones extends Component {
             Api.ubicacionFavPatch(values)
             .then(response => {
                 resolve(response)
-                this.props.refreshData()
+                this.props.bundle.refreshData()
             })
             .catch(err => {
                 console.log(err)
@@ -55,14 +55,14 @@ export default class Ubicaciones extends Component {
     deleteUbicacionFav = (ubicacionId) => {
         Api.ubicacionFavDelete(ubicacionId)
         .then(response => {
-            this.props.refreshData()
+            this.props.bundle.refreshData()
         }).catch(err => {
             console.log(err)
         })
     }
 
     setUbicacionActiva = (nombreUbicacion, callback) => {
-        Object.entries(this.props.ubicaciones).forEach(ubicacion => {
+        Object.entries(this.props.bundle.ubicaciones).forEach(ubicacion => {
             if (ubicacion[1].nombre === nombreUbicacion) {
                 this.setState({
                     ubicacionActiva: ubicacion[1]
@@ -125,7 +125,7 @@ export default class Ubicaciones extends Component {
                     <ReactTable
                         showPagination={true}
                         defaultPageSize={10}
-                        data={this.props.ubicaciones}
+                        data={this.props.bundle.ubicaciones}
                         columns={columnas}
                         previousText={'Anterior'}
                         nextText={'Siguiente'}

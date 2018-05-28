@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
-import 'react-table/react-table.css'
 import DeleteIcon from 'react-icons/lib/md/delete'
 import AddIcon from 'react-icons/lib/md/add-circle'
 import ModifyIcon from 'react-icons/lib/md/settings'
@@ -8,6 +7,8 @@ import AlarmOffIcon from 'react-icons/lib/md/alarm-off'
 import AlarmIcon from 'react-icons/lib/md/access-alarm'
 
 import AddAlarma from './AddAlarma'
+
+import 'react-table/react-table.css'
 import './Alarmas.css'
 
 import Api from '../../../api'
@@ -20,8 +21,6 @@ export default class Alarmas extends Component {
             username: this.props.bundle.user.username,
             vehiculo: this.props.bundle.user.vehiculo
         }
-
-        console.log(nuevaAlarma)
 
         return new Promise((resolve, reject) => {
             Api.alarmaPost(nuevaAlarma)
@@ -42,16 +41,12 @@ export default class Alarmas extends Component {
             estado: !estadoActual
         }
 
-        return new Promise((resolve, reject) => {
-            Api.alarmaPatch(values)
-            .then(response => {
-                resolve(response)
-                this.props.bundle.refreshData()
-            })
-            .catch(err => {
-                console.log(err)
-                reject(err)
-            })
+        Api.alarmaPatch(values)
+        .then(response => {
+            this.props.bundle.refreshData()
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
 
@@ -65,8 +60,6 @@ export default class Alarmas extends Component {
     }
 
     render() {
-        console.log(this.props.bundle.alarmas)
-
         const columnas = [{
             Header: 'Alarma',
             accessor: 'nombre',
@@ -75,10 +68,6 @@ export default class Alarmas extends Component {
             Header: 'Ubicacion / Tiempo',
             accessor: 'ubicacionfav.nombre',
             width: 250
-        }, {
-            Header: 'Modificar',
-            accessor: '_id',
-            Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Estado',
             accessor: '_id',
@@ -89,6 +78,10 @@ export default class Alarmas extends Component {
                     return <AlarmOffIcon className="clickable azul icon" onClick={() => this.toggleAlarma(accessor.value, false)} />
                 }
             }
+        }, {
+            Header: 'Modificar',
+            accessor: '_id',
+            Cell: () => <ModifyIcon className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
             accessor: '_id',

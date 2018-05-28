@@ -14,9 +14,9 @@ import './Configuracion.css'
 export default class Configuracion extends Component {
     handleAddNewCar = (values) => {
         return new Promise((resolve, reject) => {
-            Api.vehiclePost(Object.assign(values, { username: this.props.user.username })).then((car) => {
+            Api.vehiclePost(Object.assign(values, { username: this.props.bundle.user.username })).then((car) => {
                 console.log('Nuevo vehiculo agregado', car)
-                this.props.refreshData()
+                this.props.bundle.refreshData()
                 resolve()
             }).catch((error) => {
                 console.log('Error #handleAddNewCar', error)
@@ -27,12 +27,12 @@ export default class Configuracion extends Component {
 
     handleUserEdit = (values) => {
         return new Promise((resolve, reject) => {
-            Api.userPatch(Object.assign(values, { username: this.props.user.username })).then((user) => {
+            Api.userPatch(Object.assign(values, { username: this.props.bundle.user.username })).then((user) => {
                 console.log('Usuario editado', user)
-                this.props.refreshData()
+                this.props.bundle.refreshData()
                 resolve()
             }).catch((error) => {
-                console.log('Error #handleAddNewCar', error)
+                console.log('Error #handleUserEdit', error)
                 reject()
             })
         })
@@ -43,12 +43,12 @@ export default class Configuracion extends Component {
     }
 
     render() {
-        const carItem = (!this.props.user.vehiculo) ? (
+        const carItem = (!this.props.bundle.user.vehiculo) ? (
             <AddCar onSummit={this.handleAddNewCar}>
             <AddIcon className="ubicaciones-icon-clickable verde" />
              </AddCar>
         ) : (
-            <EditCar onSummit={this.handleCarEdit} vehiculo={this.props.user.vehiculo}>
+            <EditCar onSummit={this.handleCarEdit} vehiculo={this.props.bundle.user.vehiculo}>
                 <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
             </EditCar>
         )
@@ -67,7 +67,7 @@ export default class Configuracion extends Component {
                     </div>
                     <div className="settings">
                         <UserIcon className="ubicaciones-icon-big gris" />
-                        <EditUser onSummit={this.handleUserEdit} user={this.props.user}>
+                        <EditUser onSummit={this.handleUserEdit} user={this.props.bundle.user}>
                             <SettingsIcon className="ubicaciones-icon-clickable amarillo" />
                         </EditUser>
                     </div>
