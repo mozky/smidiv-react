@@ -9,7 +9,9 @@ export default class AddAlarma extends Component {
         this.state = {
             tipo: 'ubicacion',
             nombre: '',
-            ubicacion: ''
+            ubicacion: '',
+            inicio: '',
+            fin: ''
         }
     }
   
@@ -18,25 +20,40 @@ export default class AddAlarma extends Component {
     }
   
     handleSubmit = (event) => {
-      event.preventDefault()
+        event.preventDefault()
+        const { tipo, nombre, ubicacion, inicio, fin } = this.state
 
-      const { tipo, nombre, ubicacion } = this.state
+        if (nombre && (ubicacion || (inicio && fin))) {
+            const datos = {
+                nombre
+            }
+    
+            if (tipo === 'ubicacion') {
+                datos.ubicacionFav = ubicacion
+            }
 
-      if (nombre && tipo) {
-        this.props.onSummit({
-            nombre,
-            ubicacionFav: ubicacion
-        }).then((response) => {
-            this.modalRef.current.closeModal()
-            this.setState({
-                nombre: '',
-                tipo: 'ubicacion',
-                ubicacionFav: ''
+            if (tipo === 'horario') {
+                datos.inicio = inicio
+                datos.fin = fin
+            }
+
+            console.log(datos)
+    
+            this.props.onSummit(datos)
+            .then((response) => {
+                this.modalRef.current.closeModal()
+                this.setState({
+                    tipo: 'ubicacion',
+                    nombre: '',
+                    ubicacion: '',
+                    inicio: '',
+                    fin: ''
+                })
             })
-        }).catch((error) => {
-          console.log('error', error)
-        })
-      }
+            .catch((error) => {
+                console.log('error', error)
+            })
+        }
     }
 
   
@@ -46,7 +63,7 @@ export default class AddAlarma extends Component {
 
         const listaUbicaciones = (
             <div style={styles.formFieldRow}>
-                <select name="ubicacionFav" onChange={this.handleChange}>
+                <select name="ubicacion" onChange={this.handleChange}>
                     <option key="default">Selecciona una...</option>
                     { 
                         ubicaciones.map((ubicacion) => {
@@ -61,11 +78,11 @@ export default class AddAlarma extends Component {
             <div style={styles.formFieldRow}>
                     <label >
                         <span>Desde: </span>
-                        <input type="time" name="timeFrom" onChange={this.handleChange} />
+                        <input type="time" name="inicio" onChange={this.handleChange} />
                     </label>
                     <label>
                         <span>Hasta: </span>
-                        <input type="time" name="timeTo" onChange={this.handleChange} />
+                        <input type="time" name="fin" onChange={this.handleChange} />
                     </label>
             </div>
         )

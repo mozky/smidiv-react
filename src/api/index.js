@@ -327,10 +327,21 @@ function alarmaPost(request) {
   return new Promise(function(resolve, reject) {
     const token = getValidToken()
     const args = {
+      'nombre': request.nombre,
       'username': request.username,
-      'vehiculo': request.nombre,
-      'ubicacionFav': request.ubicacionFav,
-      'nombre': request.nombre
+      'vehiculo': request.vehiculo
+    }
+
+    if (request.ubicacionFav) {
+      args.ubicacionFav = request.ubicacionFav
+    }
+
+    if (request.rangoHorario) {
+      args.rangoHorario = request.rangoHorario
+    }
+
+    if (request.rangoDistancia) {
+      args.rangoDistancia = request.rangoDistancia
     }
 
     fetch(API_URL + 'alarma', {
@@ -340,24 +351,23 @@ function alarmaPost(request) {
       }, token),
       body: JSON.stringify(args)
     })
-      .then(res => {
-        console.log('POST UBICACION FAV', res.ok, res.status, res.statusText)
-        if (res.status !== 200) {
-          reject(res.status)
-        }
-        return res.text()
-      })
-      .then(body => {
-        let res = JSON.parse(body)
-        console.log('res', res)
-        if (!res.success) {
-          reject(res.message)
-        }
-        resolve(res.response)
-      }).catch(err => {
-        console.log(err)
-        reject(err)
-      })
+    .then(res => {
+      console.log('POST UBICACION FAV', res.ok, res.status, res.statusText)
+      if (res.status !== 200) {
+        reject(res.status)
+      }
+      return res.text()
+    })
+    .then(body => {
+      let res = JSON.parse(body)
+      if (!res.success) {
+        reject(res.message)
+      }
+      resolve(res.response)
+    }).catch(err => {
+      console.log(err)
+      reject(err)
+    })
   })
 }
 

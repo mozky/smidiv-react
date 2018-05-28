@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
+import { GoogleApiWrapper } from 'google-maps-react' 
 import { Route } from 'react-router-dom'
 import { PropsRoute } from '../Helpers'
+
+import Home from './Home'
+import About from './About'
 import Header from './Header'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import About from './About'
-import Ubicaciones from './Ubicaciones'
-import Configuracion from './Configuracion'
-import Historial from './Historial'
 import Alarmas from './Alarmas'
 import Estatus from './Estatus'
-import Home from './Home'
+import Historial from './Historial'
+import Ubicaciones from './Ubicaciones'
+import Configuracion from './Configuracion'
+
 import './Dashboard.css'
 
-import { GoogleApiWrapper } from 'google-maps-react' 
 
 class Dashboard extends Component {
     render() {

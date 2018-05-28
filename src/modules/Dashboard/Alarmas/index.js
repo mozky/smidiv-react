@@ -17,9 +17,17 @@ export default class Alarmas extends Component {
     handleNewAlarma = (values) => {
         const nuevaAlarma = {
             nombre: values.nombre,
-            ubicacionFav: values.ubicacionFav,
             username: this.props.bundle.user.username,
-            vehiculo: this.props.bundle.user.vehiculo
+            vehiculo: this.props.bundle.user.vehiculo._id
+        }
+        
+        if (values.ubicacionFav) {
+            nuevaAlarma.ubicacionFav = values.ubicacionFav
+        } else if (values.inicio && values.fin) {
+            nuevaAlarma.rangoHorario = {
+                inicio: values.inicio,
+                fin: values.fin
+            }
         }
 
         return new Promise((resolve, reject) => {
@@ -65,9 +73,17 @@ export default class Alarmas extends Component {
             accessor: 'nombre',
             width: 250
         }, {
-            Header: 'Ubicacion / Tiempo',
+            Header: 'Ubicacion',
             accessor: 'ubicacionfav.nombre',
-            width: 250
+            width: 200,
+        }, {
+            Header: 'Inicio',
+            accessor: 'rangoHorario.inicio',
+            width: 150,
+        }, {
+            Header: 'Fin',
+            accessor: 'rangoHorario.fin',
+            width: 150,
         }, {
             Header: 'Estado',
             accessor: '_id',

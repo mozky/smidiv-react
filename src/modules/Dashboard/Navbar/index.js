@@ -3,6 +3,7 @@ import LocationIcon from 'react-icons/lib/md/location-on'
 import CarIcon from 'react-icons/lib/md/directions-car'
 import HistoryIcon from 'react-icons/lib/md/history'
 import AlarmIcon from 'react-icons/lib/md/alarm'
+import HomeIcon from 'react-icons/lib/md/home'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import './Navbar.css'
@@ -10,6 +11,10 @@ import './Navbar.css'
 export default class Navbar extends Component {
     render() {
         const tabs = {
+            '/app': {
+                label: 'Home',
+                icon: <HomeIcon className="icon navsubitem" />
+            },
             '/app/alarma': {
                 label: 'Alarma',
                 icon: <AlarmIcon className="icon navsubitem" />
@@ -37,8 +42,7 @@ export default class Navbar extends Component {
                     {icon}
                 </Link>
             )
-        }
-        )
+        })
 
         return (
             <nav id="Navbar">

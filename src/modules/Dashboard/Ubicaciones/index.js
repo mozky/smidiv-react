@@ -95,11 +95,11 @@ export default class Ubicaciones extends Component {
             width: 250
         }, {
             Header: 'Mapa',
-            id: 'ubicacion',
+            id: '_id',
             Cell: (accessor) => <LocationIcon onClick={() => this.toggleVerUbicacionModal(accessor.original.nombre)} className="clickable azul icon" />
         }, {
             Header: 'Modificar',
-            id: 'edit',
+            id: '_id',
             Cell: (accessor) => <ModifyIcon onClick={() => this.toggleEditUbicacionModal(accessor.original.nombre)} className="clickable amarillo icon" />
         }, {
             Header: 'Eliminar',
