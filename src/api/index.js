@@ -208,6 +208,47 @@ function vehiclePost(request) {
   })
 }
 
+function vehiculoPatch(request) {
+  return new Promise(function(resolve, reject) {
+    const token = getValidToken()
+    const args = {
+      'idVehiculo': request.vehiculo._id,
+      'username': request.username,
+    }
+
+    if (request.marca) {
+      args.marca = request.marca.nombre
+    }
+
+    if (request.modelo) {
+      args.modelo = request.modelo
+    }
+
+    if (request.smidivID) {
+      args.smidivID = request.smidivID
+    }
+
+    if (request.placas) {
+      args.placas = request.placas
+    }
+
+    fetch(API_URL + 'vehicle/', {
+      method: 'PATCH',
+      headers: Object.assign({
+        'Content-Type': 'application/json'
+      }, token),
+      body: JSON.stringify(args)
+    })
+      .then(res => {
+        console.log('PATCH VEHICULO', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        resolve(true)
+      })
+  })
+}
+
 function ubicacionFavPost(request) {
   return new Promise(function(resolve, reject) {
     const token = getValidToken()
@@ -458,6 +499,7 @@ export default  {
   alarmaPatch,
   vehiclePost,
   alarmaDelete,
+  vehiculoPatch,
   ubicacionFavGet,
   ubicacionFavPost,
   ubicacionFavPatch,

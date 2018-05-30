@@ -39,7 +39,19 @@ export default class Configuracion extends Component {
     }
 
     handleCarEdit = (values) => {
-     console.log('TODO: Update car values', values)
+        return new Promise((resolve, reject) => {
+            Api.vehiculoPatch(Object.assign(values, {
+                username: this.props.bundle.user.username,
+                vehiculo: this.props.bundle.user.vehiculo
+            })).then((vehicle) => {
+                console.log('Vehiculo editado', vehicle)
+                this.props.bundle.refreshData()
+                resolve()
+            }).catch((error) => {
+                console.log('Error #handleCarEdit', error)
+                reject()
+            })
+        })
     }
 
     render() {
