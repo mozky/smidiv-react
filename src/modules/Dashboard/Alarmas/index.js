@@ -95,10 +95,10 @@ export default class Alarmas extends Component {
                 }
             }
         }, {
-            Header: 'Modificar',
-            accessor: '_id',
-            Cell: () => <ModifyIcon className="clickable amarillo icon" />
-        }, {
+        //     Header: 'Modificar',
+        //     accessor: '_id',
+        //     Cell: () => <ModifyIcon className="clickable amarillo icon" />
+        // }, {
             Header: 'Eliminar',
             accessor: '_id',
             Cell: (accessor) => <DeleteIcon className="clickable rojo icon" onClick={() => this.deleteAlarma(accessor.value)} />
