@@ -77,7 +77,7 @@ export default class EditUbicacion extends Component {
                 content={modalContent}
                 title={`Editar ubicación - ${this.props.ubicacion.nombre}`}
                 width="50%"
-                height="66%"
+                height="67%"
             >
                 {this.props.children}
             </Modal>

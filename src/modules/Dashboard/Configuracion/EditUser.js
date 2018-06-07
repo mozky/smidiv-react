@@ -70,7 +70,7 @@ export default class EditUser extends Component {
         // if (day.length < 2)
         //     day = '0' + day
     
-        return [year, month, day].join('-');
+        return [year, month, day].join('-')
     }
   
     render() {
@@ -91,7 +91,7 @@ export default class EditUser extends Component {
                 <div className="formRow">
                     <label>
                      <span>Fecha de nacimiento</span>
-                        <input type="date" value={this.formatDate(fechaNacimiento)} name='fechaNacimiento' onChange={this.handleChange} />
+                        <input type="date" name='fechaNacimiento' onBlur={this.handleChange} />
                     </label>
                     <label>
                          <span>Correo electrónico</span>
@@ -120,7 +120,7 @@ export default class EditUser extends Component {
                 title="Editar Usuario"
                 content={modalContent}
                 width="35%"
-                height="46%"
+                height="47%"
             >
                 {this.props.children}
             </Modal>

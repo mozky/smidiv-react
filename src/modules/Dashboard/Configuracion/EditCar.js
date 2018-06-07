@@ -4,9 +4,10 @@ import Modal from '../Common/Modal'
 
 export default class EditCar extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+        this.closeRef = React.createRef()
         this.state = {
-            marca: props.vehiculo.marca,
+            marca: props.vehiculo.marca.nombre,
             modelo: props.vehiculo.modelo,
             placas: props.vehiculo.placas,
             smidivID: props.vehiculo.smidivID
@@ -22,10 +23,15 @@ export default class EditCar extends Component {
 
       const { marca, modelo, placas, smidivID } = this.state
       this.props.onSummit({
-        marca,
+        marca: marca,
         modelo,
         placas,
         smidivID
+      })
+      .then((response) => {
+        this.closeRef.current.closeModal()
+      }).catch((error) => {
+          console.log('error', error)
       })
     }
   
@@ -35,7 +41,7 @@ export default class EditCar extends Component {
         <div className="formRow">
           <label>
             <span>Marca</span>
-            <input type="text" value={this.state.marca.nombre} name='marca' onChange={this.handleChange} />
+            <input type="text" value={this.state.marca} name='marca' onChange={this.handleChange} />
           </label>
           <label>
             <span>Modelo</span>
@@ -60,10 +66,11 @@ export default class EditCar extends Component {
 
       return (
           <Modal
+            ref={this.closeRef}
             content={modalContent}
             title={"Editar vehículo"}
             width="35%"
-            height="36%"
+            height="37%"
           >
             {this.props.children}
           </Modal>

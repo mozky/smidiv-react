@@ -217,7 +217,7 @@ function vehiculoPatch(request) {
     }
 
     if (request.marca) {
-      args.marca = request.marca.nombre
+      args.marca = request.marca
     }
 
     if (request.modelo) {

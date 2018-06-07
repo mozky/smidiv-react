@@ -3,42 +3,33 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import LocationIcon from 'react-icons/lib/md/location-on'
 
+import VerAlerta from './VerAlerta'
+
 import './Historial.css'
 
 export default class Historial extends Component {
-    render() {
-        const data = [{
-            id: 1,
-            fecha: '06/11/2017',
-            hora: '13:30',
-            accion: 'Encendido',
-            ubicacion: '1'
-        }, {
-            id: 2,
-            fecha: '07/11/2017',
-            hora: '18:45',
-            accion: 'Alarma activa',
-            ubicacion: '2'
-        }, {
-            id: 3,
-            fecha: '04/10/2017',
-            hora: '12:01',
-            accion: 'Reporte de ubicación',
-            ubicacion: '2'
-        }, {
-            id: 4,
-            fecha: '01/10/2017',
-            hora: '04:20',
-            accion: 'Encendido',
-            ubicacion: '2'
-        }, {
-            id: 5,
-            fecha: '28/09/2017',
-            hora: '10:19',
-            accion: 'Alarma desactivada',
-            ubicacion: '2'
-        }]
+    constructor(props) {
+        super(props)
+        this.verAlertaRef = React.createRef()
+        this.state = {
+            alertaActiva: {
+                lat: 0,
+                lng: 0
+            }
+        }
+    }
 
+    setAlertaActiva = (ubicacionAlerta, callback) => {
+        this.setState({
+            alertaActiva: ubicacionAlerta
+        }, callback)
+    }
+
+    toggleVerAlertaModal = (ubicacionAlerta) => {
+        this.setAlertaActiva(ubicacionAlerta, this.verAlertaRef.current.click())
+    }
+
+    render() {
         const columnas = [{
             Header: 'Fecha',
             accessor: 'fecha',
@@ -62,16 +53,19 @@ export default class Historial extends Component {
         }, {
             Header: 'Ubicación',
             accessor: 'ubicacion',
-            Cell: () => <LocationIcon className="clickable rojo icon" />
+            Cell: (accessor) => <LocationIcon className="clickable rojo icon" onClick={() => this.toggleVerAlertaModal(accessor.original.ubicacion)} />
         }]
 
         return (
             <div id="Historial" className="DashboardPage">
+                <VerAlerta center={this.state.alertaActiva} google={this.props.google}>
+                    <span ref={this.verAlertaRef}></span>
+                </VerAlerta>
                 <div className="titulo">Historial de alertas</div>
                 <div className="tabla">
                 <ReactTable
                         showPagination={true}
-                        defaultPageSize={10}
+                        defaultPageSize={5}
                         data={this.props.bundle.alertas}
                         columns={columnas}
                         previousText={'Anterior'}

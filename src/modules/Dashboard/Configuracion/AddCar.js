@@ -75,7 +75,7 @@ export default class AddCar extends Component {
             content={modalContent}
             title={"Añadir vehículo"}
             width="35%"
-            height="38%"
+            height="40%"
           >
             {this.props.children}
           </Modal>

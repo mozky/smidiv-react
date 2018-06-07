@@ -116,7 +116,7 @@ export default class AddAlarma extends Component {
                 content={modalContent}
                 title={"Crear alarma"}
                 width="30%"
-                height="33%"
+                height="34%"
             >
                 {this.props.children}
             </Modal>

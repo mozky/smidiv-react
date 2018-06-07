@@ -3,7 +3,7 @@ import { Map, Marker } from 'google-maps-react'
 
 import Modal from '../Common/Modal'
 
-export default class VerUbicacion extends Component {
+export default class VerAlerta extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -19,12 +19,12 @@ export default class VerUbicacion extends Component {
   
     render() {
       const modalContent = (
-        <div id="addLocationForm" style={styles.formContainer}>
+        <div id="verAlerta" style={styles.formContainer}>
           <div className="ubicacionMap" style={Object.assign({}, styles.formRow, styles.mapContainer)}>
             <Map style={styles.map} google={this.props.google} zoom={16} initialCenter={this.props.center}>
               <Marker
-                title={this.props.nombre}
-                name={this.props.nombre}
+                title='Ubicación'
+                name='Ubicación'
                 position={this.props.center}
               />
             </Map>
@@ -36,7 +36,7 @@ export default class VerUbicacion extends Component {
           <Modal
             closeModal={this.state.closeModal}
             content={modalContent}
-            title={`Ubicación favorita - ${this.props.nombre}`}
+            title={`Alerta`}
             width="50%"
             height="53%"
           >
