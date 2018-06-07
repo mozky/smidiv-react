@@ -6,11 +6,22 @@ import './Estatus.css'
 
 export default class Estatus extends Component {
     render() {
+        let data = []
+
+        if (this.props.bundle.user.username === 'bryan') {
+            data = [{
+                    id: 'P2700',
+                    fecha: "23/05/2017",
+                    hora: "17:23",
+                    descripcion: <a target='_blank' href='https://www.obd-codes.com/p2700'>Transmission Friction Element "A" Apply Time Range/Performance"</a>
+                }
+            ]
+        }
         // const data = [{
-        //     id: 'P0627',
+        //     id: 'P2700',
         //     fecha: "23/02/2017",
         //     hora: "17:23",
-        //     descripcion: "Falla en circuito de bomba de combustible"
+        //     descripcion: "Transmission Friction Element "A" Apply Time Range/Performance"
         // }, {
         //     id: 'P0168',
         //     fecha: "18/02/2017",
@@ -32,7 +43,6 @@ export default class Estatus extends Component {
         //     hora: "17:01",
         //     descripcion: "Sobrecalentamiento del aceite del motor"
         // }]
-        const data = []
 
         const columnas = [{
             Header: 'PID',

@@ -37,7 +37,7 @@ class Dashboard extends Component {
                     <Route exact path={match.url} component={Home}/>
                     <Route exact path={`${match.url}/404`} render={() => <div>TODO: 404 page</div>}/>
                     <Route exact path={`${match.url}/about`} component={About}/>
-                    <Route exact path={`${match.url}/estatus`} component={Estatus}/>
+                    <PropsRoute exact path={`${match.url}/estatus`} bundle={bundle} component={Estatus}/>
                     <PropsRoute exact path={`${match.url}/historial`} google={google} bundle={bundle} component={Historial}/>
                     <PropsRoute exact path={`${match.url}/alarma`} bundle={bundle} component={Alarmas}/>
                     <PropsRoute exact path={`${match.url}/configuracion`} bundle={bundle} component={Configuracion}/>

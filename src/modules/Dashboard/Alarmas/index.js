@@ -101,6 +101,11 @@ export default class Alarmas extends Component {
             Cell: (accessor) => <DeleteIcon className="clickable rojo icon" onClick={() => this.deleteAlarma(accessor.value)} />
         }]
 
+        let data = []
+        if (this.props.bundle.alarmas && this.props.bundle.alarmas.length > 0) {
+            data = this.props.bundle.alarmas
+        }
+
         return (
             <div id="Alarmas" className="DashboardPage">
                 <div className="title-container">
@@ -113,7 +118,7 @@ export default class Alarmas extends Component {
                     <ReactTable
                         showPagination={true}
                         defaultPageSize={10}
-                        data={this.props.bundle.alarmas}
+                        data={data}
                         columns={columnas}
                         previousText={'Anterior'}
                         nextText={'Siguiente'}
