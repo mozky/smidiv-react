@@ -19,13 +19,14 @@ import './Dashboard.css'
 
 class Dashboard extends Component {
     render() {
-        const { user, handleLogout, location, refreshData, google, match, ubicaciones, alarmas } = this.props
+        const { user, handleLogout, location, refreshData, google, match, ubicaciones, alarmas, alertas } = this.props
 
         const bundle = {
             user,
             ubicaciones,
             refreshData,
-            alarmas
+            alarmas,
+            alertas
         }
 
         return (
@@ -37,7 +38,7 @@ class Dashboard extends Component {
                     <Route exact path={`${match.url}/404`} render={() => <div>TODO: 404 page</div>}/>
                     <Route exact path={`${match.url}/about`} component={About}/>
                     <Route exact path={`${match.url}/estatus`} component={Estatus}/>
-                    <Route exact path={`${match.url}/historial`} component={Historial}/>
+                    <PropsRoute exact path={`${match.url}/historial`} bundle={bundle} component={Historial}/>
                     <PropsRoute exact path={`${match.url}/alarma`} bundle={bundle} component={Alarmas}/>
                     <PropsRoute exact path={`${match.url}/configuracion`} bundle={bundle} component={Configuracion}/>
                     <PropsRoute exact path={`${match.url}/ubicaciones`} google={google} bundle={bundle} component={Ubicaciones}/>

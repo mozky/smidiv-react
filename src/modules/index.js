@@ -43,34 +43,42 @@ class App extends Component {
 
   getUserData() {
     if ( this.state.token !== 'null' && this.state.token.username ) {
+      const userData = {
+        user: '',
+        ubicaciones: '',
+        alarmas: '',
+        alertas: ''
+      }
       return Promise.all([
         Api.userGet(this.state.token.username)
         .then((response) => {
-          this.setState({
-            user: response.user
-          })
+          userData.user = response.user
         }).catch((err) => {
           console.log(err)
         }),
         Api.ubicacionFavGet(this.state.token.username)
         .then((response) => {
-          this.setState({
-            ubicaciones: response.ubicaciones
-          })
+          userData.ubicaciones = response.ubicaciones
         })
         .catch((err) => {
           console.log(err)
         }),
         Api.alarmaGet(this.state.token.username)
         .then((response) => {
-          this.setState({
-            alarmas: response.alarmas
-          })
+          userData.alarmas = response.alarmas
         })
         .catch((err) => {
           console.log(err)
+        }),
+        Api.alertasGet(this.state.token.username)
+        .then((response) => {
+          userData.alertas = response.alertas
         })
-      ])
+      ]).then(() => {
+        this.setState(userData)
+      }).catch((err) => {
+        console.log('Error while getting user data', err)
+      })
     }
   }
 
@@ -123,6 +131,7 @@ class App extends Component {
               user={this.state.user}
               ubicaciones={this.state.ubicaciones}
               alarmas={this.state.alarmas}
+              alertas={this.state.alertas}
               admin={this.state.token.admin}
               isLoggedIn={this.state.isLoggedIn}
               handleLogout={this.handleLogout}

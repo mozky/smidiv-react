@@ -488,6 +488,32 @@ function alarmaPatch(request) {
   })
 }
 
+function alertasGet(username) {
+  return new Promise(function(resolve, reject) {
+    fetch(API_URL + 'alerta/' + username, {
+      method: 'GET',
+      headers: getValidToken()
+    })
+      .then(res => {
+        console.log('GET ALERTAS', res.ok, res.status, res.statusText)
+        if (res.status !== 200) {
+          reject(res.status)
+        }
+        return res.text()
+      })
+      .then(body => {
+        let res = JSON.parse(body)
+        if (!res.success) {
+          reject(res.message)
+        }
+        resolve(res.response)
+      }).catch(err => {
+        console.log(err)
+        reject(err)
+      })
+  })
+}
+
 export default  {
   login,
   health,
@@ -496,6 +522,7 @@ export default  {
   userPatch,
   alarmaGet,
   alarmaPost,
+  alertasGet,
   alarmaPatch,
   vehiclePost,
   alarmaDelete,

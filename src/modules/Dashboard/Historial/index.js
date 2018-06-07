@@ -40,18 +40,25 @@ export default class Historial extends Component {
         }]
 
         const columnas = [{
-            Header: 'Id',
-            accessor: 'id',
-            width: 150
-        }, {
             Header: 'Fecha',
-            accessor: 'fecha'
+            accessor: 'fecha',
+            Cell: (accessor) => {
+                const fecha = new Date(accessor.original.fechaCreacion)
+                return fecha.toLocaleDateString("es-MX")
+            }
         }, {
             Header: 'Hora',
-            accessor: 'hora'
+            accessor: 'hora',
+            Cell: (accessor) => {
+                const fecha = new Date(accessor.original.fechaCreacion)
+                return timeNow(fecha)
+            }
         }, {
             Header: 'Acción',
-            accessor: 'accion'
+            accessor: 'accion',
+            Cell: (accessor) => {
+                return `${accessor.original.tipo.charAt(0).toUpperCase()}${accessor.original.tipo.slice(1)} ${accessor.original.valor}`
+            }
         }, {
             Header: 'Ubicación',
             accessor: 'ubicacion',
@@ -60,11 +67,30 @@ export default class Historial extends Component {
 
         return (
             <div id="Historial" className="DashboardPage">
-                <div className="titulo">Historial del automóvil</div>
+                <div className="titulo">Historial de alertas</div>
                 <div className="tabla">
-                    <ReactTable showPagination={false} defaultPageSize={5} data={data} columns={columnas} />
+                <ReactTable
+                        showPagination={true}
+                        defaultPageSize={10}
+                        data={this.props.bundle.alertas}
+                        columns={columnas}
+                        previousText={'Anterior'}
+                        nextText={'Siguiente'}
+                        loadingText={'Cargando...'}
+                        noDataText={'Sin datos'}
+                        pageText={'Página'}
+                        ofText={'de'}
+                        rowsText={'filas'}
+                    />
                 </div>
             </div>
         )
     }
+}
+
+const timeNow = (i) => {
+    const d = new Date(i)
+    const h = (d.getHours()<10?'0':'') + d.getHours()
+    const m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+    return h + ':' + m;
 }
