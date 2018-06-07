@@ -71,19 +71,16 @@ export default class Alarmas extends Component {
         const columnas = [{
             Header: 'Alarma',
             accessor: 'nombre',
-            width: 250
         }, {
-            Header: 'Ubicacion',
-            accessor: 'ubicacionfav.nombre',
-            width: 200,
-        }, {
+        //     Header: 'Ubicacion',
+        //     accessor: 'ubicacionfav.nombre',
+        //     width: 200,
+        // }, {
             Header: 'Inicio',
             accessor: 'rangoHorario.inicio',
-            width: 150,
         }, {
             Header: 'Fin',
             accessor: 'rangoHorario.fin',
-            width: 150,
         }, {
             Header: 'Estado',
             accessor: '_id',

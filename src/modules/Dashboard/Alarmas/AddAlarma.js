@@ -7,7 +7,7 @@ export default class AddAlarma extends Component {
         super(props)
         this.modalRef = React.createRef()
         this.state = {
-            tipo: 'ubicacion',
+            tipo: 'horario',
             nombre: '',
             ubicacion: '',
             inicio: '',
@@ -36,8 +36,6 @@ export default class AddAlarma extends Component {
                 datos.inicio = inicio
                 datos.fin = fin
             }
-
-            console.log(datos)
     
             this.props.onSummit(datos)
             .then((response) => {
@@ -92,7 +90,7 @@ export default class AddAlarma extends Component {
                 <div style={styles.formFieldRow}>
                     <input style={styles.formField} placeholder="Ingresa un nombre..." type="text" value={nombre} name='nombre' onChange={this.handleChange} />
                 </div>
-                <div style={styles.formFieldRow}>
+                {/* <div style={styles.formFieldRow}>
                     <label >
                         <span>Ubicacion</span>
                         <input type="radio" value="ubicacion" name="tipo" onChange={this.handleChange} checked={tipo === 'ubicacion'} />
@@ -101,7 +99,7 @@ export default class AddAlarma extends Component {
                         <span>Horario</span>
                         <input type="radio" value="horario" name="tipo" onChange={this.handleChange} checked={tipo === 'horario'} />
                     </label>
-                </div>
+                </div> */}
                 { tipo === 'ubicacion' && listaUbicaciones }
                 { tipo === 'horario' && rangoHorarios }
                 <div style={styles.formRow}>
