@@ -7,7 +7,7 @@
     "google-maps-react": "^2.0.2",
     "jwt-decode": "^2.2.0",
     "react": "^16.3.2",
-    "react-anchor-link-smooth-scroll": "^1.0.9",
+    "react-anchor-link-smooth-scroll": "^1.0.10",
     "react-dom": "^16.3.2",
     "react-icons": "^2.2.7",
     "react-modal": "^3.4.4",

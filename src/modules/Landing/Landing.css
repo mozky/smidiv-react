@@ -237,6 +237,7 @@ header.l nav li:last-child {
 ----------------------*/
 
 .features {
+	position: relative;
 	background-color: #f7f7f7;
 }
 
@@ -392,3 +393,198 @@ footer.l p a {
 	font-size: 1.6em;
 	font-weight: bold;
 }
+
+.contenidoCentrado {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5em;
+	line-height: 2em;
+
+}
+
+.sectionPlanteamiento {
+	height: 700px;
+	background-image:linear-gradient(to right, rgba(62,97,116,0.9), rgba(62,97,116,0.9)), url('../../images/fondoPlanteamiento.jpg');
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+.tituloW {
+	color: white!important;
+}
+
+.txtCentrado { text-align: center; }
+
+.sectionObjetivo {
+	min-height: 600px;
+	background-image:linear-gradient(to right, rgba(62,97,116,0.7), rgba(62,97,116,0.7)), url('../../images/autoOb.jpg');
+	background-size: cover;
+} 
+
+.imagenSolucion { 
+	width: 500px;
+	height: 230px;
+	margin-top: 20px;
+	background: url('../../images/autoSolucion.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.contenedorImagenes {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.checkEngine {
+	width: 100px;
+	height: 100px;
+	background: url(../../images/checkEngine.png);
+	background-size: cover;
+}
+
+.maps {
+	width: 100px;
+	height: 100px;
+	background: url(../../images/maps.png);
+	background-size: cover;
+}
+
+.imagenArquitectura {
+	width: 1285px;
+	height: 691px;
+	background: url(../../images/arquitecturaSistema.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+}
+
+.contenidoAgenda {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+
+.imagenAgenda {
+	width: 400px;
+	height: 320px;
+	background: url(../../images/Agenda.png);
+	background-size: cover;
+	background-position: center -70px;
+	background-repeat: no-repeat;
+}
+
+.listaAgenda {
+	counter-reset: li; 
+    list-style: decimal; 
+}
+
+.listaAgenda li {
+	position: relative;
+    display: block;
+    padding: 0 .4em 0 2em;
+    margin: .5em 0;
+    background: #ddd;
+    text-decoration: none;
+    border-radius: .3em;	
+}
+
+.listaAgenda li:before {
+
+	content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+	
+}
+
+.pops {
+	position: absolute;
+	width: 675px;
+	left: calc(50% - 320px);
+	top: 330px;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 0 0 40px #424652;
+
+}
+
+.QR {
+	width: 150px;
+}
+
+.sectionPruebas {
+	min-height: 600px;
+	background-image:linear-gradient(to right, rgba(62,97,116,0.7), rgba(62,97,116,0.7)), url('../../images/fondoPruebas.jpg');
+	background-size: 50%;
+	background-position: center;
+	color: white!important;
+} 
+
+.sectionConclusiones {
+	min-height: 600px;
+	background-image:linear-gradient(to right, rgba(62,97,116,0.7), rgba(62,97,116,0.7)), url('../../images/fondoConclusiones.jpg');
+	background-size: cover;
+	background-position: center;
+	color: white!important;
+}
+
+.sectionTFuturo {
+	position: relative;
+}
+
+.imagenIOT {
+	width: 500px;
+	height: 256px;
+	background-image: url('../../images/tFuturo.png');
+	background-size: cover;
+	position: absolute;
+	right: 100px;
+	bottom: 30px;
+}
+
+.descargarAPP {
+	width: 150px;
+	height: 150px;
+	margin: 20px 0;
+	background-size: cover;
+	background-image: url('../../images/qrAPP.png');
+
+}
+
+.lineaAndroid {
+	width: 250px;
+	height: 2px;
+	background-color: white;
+	border: 0;
+}
+
+.blanco:hover {
+	color: #fcf2d9
+}
+
+.blanco {
+	color: white;
+}
+
+.despliegue { margin-top: 60px; }
