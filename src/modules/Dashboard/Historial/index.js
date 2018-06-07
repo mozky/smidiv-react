@@ -53,7 +53,7 @@ export default class Historial extends Component {
         }, {
             Header: 'Ubicación',
             accessor: 'ubicacion',
-            Cell: (accessor) => <LocationIcon className="clickable rojo icon" onClick={() => this.toggleVerAlertaModal(accessor.original.ubicacion)} />
+            Cell: (accessor) => <LocationIcon className="clickable rojo icon" onClick={() => this.toggleVerAlertaModal(accessor.original.ubicacionId.ubicacion)} />
         }]
 
         return (

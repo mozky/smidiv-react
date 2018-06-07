@@ -7,12 +7,6 @@ export default class VerAlerta extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        initialCenter: {
-          lat: 19.432608,
-          lng: -99.133209
-        },
-        zoom: 11,
-        nombre: '',
         closeModal: false
       }
     }
