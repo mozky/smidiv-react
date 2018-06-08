@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+// import SSlider from '../Slider/index.js'
 
 import Api from '../../api'
 import './Landing.css'
@@ -18,7 +19,6 @@ import qrDoc from '../../images/qrDocumento.png'
 import qrMan from '../../images/qrManual.png'
 import docker from '../../images/docker.png'
 import aws from '../../images/aws.png'
-
 
 
 export default class Landing extends Component {
@@ -111,7 +111,7 @@ export default class Landing extends Component {
             <li>Planteamiento del problema​</li>
             <li>Propuesta de solución​</li>
             <li>Objetivo</li>
-            <li>Arquitectura del sistema​</li>
+            <li>Sistema SMIDIV​</li>
             <li>Pruebas​</li>
             <li>Resultados​</li>
             <li>Conclusiones​</li>
@@ -125,13 +125,15 @@ export default class Landing extends Component {
 
         <section className="l sectionPlanteamiento">
           <h3 className="title tituloW">Planteamiento del problema</h3>
-          <div className="contenidoCentrado">
+          <div className="contenidoAgenda planteamiento">
             <ul> 
               <li>¿Actualmente cómo obtenemos información del vehículo?​</li>
               <li>¿​Estas formas funcionan?</li>
-              <li>¿Sabes en donde está tu automóvil?​</li>
               <li>¿Sabes por qué tu automóvil no prende?​</li>
+              <li>¿Sabes en donde está tu automóvil?​</li>
             </ul> 
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7GiyiOeHlv0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe>
           </div>
         </section>
 
@@ -220,7 +222,7 @@ export default class Landing extends Component {
         </section>
 
         <section className="l">
-          <h3 className="title">Arquitectura del sistema</h3>
+          <h3 className="title">Sistema SMIDIV</h3>
           <div className="contenidoCentrado">
             <div className="imagenArquitectura"></div>
           </div>
@@ -229,21 +231,33 @@ export default class Landing extends Component {
         <section className="l sectionPruebas">
           <h3 className="title tituloW">Pruebas</h3>
           <div className="contenidoCentrado">
-            <div>Videos</div>
+          <iframe width="960" height="515" src="https://www.youtube.com/embed/Le9R_eWDP1Y?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+          
           </div>
         </section>
 
         <section className="l">
           <h3 className="title">Resultados</h3>
           <div className="contenidoCentrado">
-            {/* <div className="imagenArquitectura"></div> */}
+            <span style={{fontWeight: 600}}>Tiempo promedio en el que se envia una petición del dispositivo Arduino al servidor</span>
+            <p>Tiempo minimo: 39 segundos. Tiempo máximo: 1 minuto.</p>
+
+            <span style={{fontWeight: 600}}>Tiempo promedio en el que se envia una petición del dispositivo Arduino al servidor (Automovil apagado)</span>
+            <p>Tiempo aproximado: 3 minutos</p>
+
+           <span style={{fontWeight: 600}}> Datos utilizados en la aplicación</span>
+            <p>Promedio por hora: 0.06MB. Aproximado por día: 1.6MB.</p>           
+
           </div>
         </section>
 
         <section className="l sectionConclusiones">
           <h3 className="title tituloW">Conclusiones</h3>
           <div className="contenidoCentrado">
-            {/* <div className="imagenArquitectura"></div> */}
+              <span className="txtCentrado">Como resultado de lo realizado en este trabajo terminal, podemos decir que las tecnologías utilizadas
+              a lo largo del desarrollo del sistema cumplieron con las expectativas, ya que nos proporcionaron de las herramientas
+              necesarias para realizar las tareas necesarias al desarrollo de esta aplicacion. </span>
+        
           </div>
         </section>
 
